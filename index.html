@@ -1,43 +1,611 @@
-﻿<!DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Maurice Jordan | The Smash Coder</title>
+  <title>Maurice Jordan | theSMASHcoder</title>
+  <meta name="description" content="Developer • Systems Architect • Personal Coach. I build systems that actually ship, and help builders rebuild discipline and direction." />
 
-    <link rel="icon" href="favicon.ico" type="image/png" />
+  <link rel="icon" href="favicon.ico" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <link href="https://fonts.googleapis.com/css?family=Reem+Kufi|Roboto:300" rel="stylesheet">
-    <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/themes/green-white.css">
-    <!-- <link rel="stylesheet" href="css/themes/green-white.css"> -->
-    <!-- <link rel="stylesheet" href="css/themes/red-white.css"> -->
-    <!-- <link rel="stylesheet" href="css/themes/grey-white.css"> -->
-    <!-- <link rel="stylesheet" href="css/themes/white-indigo.css"> -->
-    <!-- <link rel="stylesheet" href="css/themes/white-blue.css"> -->
-    <!-- <link rel="stylesheet" href="css/themes/white-grey.css"> -->
-    <!-- <link rel="stylesheet" href="css/themes/white-red.css"> -->
-    <!-- <link rel="stylesheet" href="css/themes/yellow-black.css"> -->
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" rel="stylesheet" />
+
+  <style>
+    :root{
+      --bg: #070A0F;
+      --bg2:#0B1020;
+      --card:#0E162B;
+      --ink:#EAF0FF;
+      --muted: rgba(234,240,255,.72);
+
+      --green:#39D98A;
+      --green2:#17B26A;
+      --purple:#8B5CF6;
+      --purple2:#A78BFA;
+
+      --line: rgba(234,240,255,.10);
+      --shadow: 0 18px 60px rgba(0,0,0,.55);
+      --radius: 22px;
+      --radius2: 16px;
+
+      --max: 1100px;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(1000px 700px at 15% 0%, rgba(57,217,138,.18), transparent 55%),
+        radial-gradient(900px 700px at 90% 10%, rgba(139,92,246,.18), transparent 55%),
+        radial-gradient(900px 700px at 50% 90%, rgba(167,139,250,.10), transparent 55%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+      color: var(--ink);
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    .wrap{ max-width: var(--max); margin: 0 auto; padding: 26px 18px 80px; }
+
+    /* Top Nav */
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:14px;
+      position: sticky;
+      top: 0;
+      padding: 14px 0;
+      background: linear-gradient(180deg, rgba(7,10,15,.92), rgba(7,10,15,.55), transparent);
+      backdrop-filter: blur(10px);
+      z-index: 10;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight:800; letter-spacing:.2px;
+    }
+    .dot{
+      width:10px; height:10px; border-radius:50%;
+      background: linear-gradient(135deg, var(--green), var(--purple));
+      box-shadow: 0 0 0 6px rgba(57,217,138,.10);
+    }
+    .navlinks{ display:flex; gap:12px; flex-wrap:wrap; justify-content:flex-end; }
+    .pill{
+      border:1px solid var(--line);
+      border-radius: 999px;
+      padding: 10px 12px;
+      font-weight:600;
+      color: var(--muted);
+      background: rgba(255,255,255,.03);
+      transition: transform .12s ease, border-color .12s ease, background .12s ease;
+    }
+    .pill:hover{
+      transform: translateY(-1px);
+      border-color: rgba(234,240,255,.20);
+      background: rgba(255,255,255,.05);
+      color: var(--ink);
+    }
+
+    /* Hero */
+    .hero{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 18px;
+      margin-top: 14px;
+      align-items: stretch;
+    }
+    @media (max-width: 920px){
+      .hero{ grid-template-columns: 1fr; }
+    }
+    .panel{
+      border: 1px solid var(--line);
+      background: rgba(14,22,43,.70);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .heroLeft{ padding: 28px 26px; position:relative; }
+    .kicker{
+      display:inline-flex; gap:10px; align-items:center;
+      color: var(--muted); font-weight:600;
+    }
+    .kbadge{
+      border:1px solid rgba(57,217,138,.35);
+      color: rgba(57,217,138,.95);
+      background: rgba(57,217,138,.08);
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      letter-spacing:.2px;
+    }
+    h1{
+      margin: 14px 0 10px;
+      font-size: clamp(34px, 4.3vw, 58px);
+      line-height: 1.02;
+      letter-spacing: -0.7px;
+    }
+    .accent{
+      background: linear-gradient(90deg, var(--green), var(--purple));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .sub{
+      max-width: 55ch;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.55;
+      margin: 0 0 18px;
+    }
+    .roleline{
+      color: rgba(234,240,255,.78);
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+    .ctaRow{ display:flex; gap:12px; flex-wrap:wrap; margin-top: 14px; }
+    .btn{
+      display:inline-flex; gap:10px; align-items:center; justify-content:center;
+      border-radius: 14px;
+      padding: 12px 14px;
+      font-weight: 800;
+      border: 1px solid rgba(234,240,255,.14);
+      background: rgba(255,255,255,.04);
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+    }
+    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.06); border-color: rgba(234,240,255,.22); }
+    .btnPrimary{
+      background: linear-gradient(135deg, rgba(57,217,138,.95), rgba(139,92,246,.95));
+      border-color: transparent;
+      color:#071013;
+    }
+    .btnPrimary:hover{ background: linear-gradient(135deg, rgba(57,217,138,1), rgba(139,92,246,1)); }
+    .btn i{ opacity:.95; }
+
+    /* Right Hero Card */
+    .heroRight{
+      padding: 22px;
+      display:flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 260px;
+      position:relative;
+    }
+    .portrait{
+      border-radius: 18px;
+      border: 1px solid rgba(234,240,255,.12);
+      background:
+        radial-gradient(400px 260px at 25% 20%, rgba(57,217,138,.22), transparent 55%),
+        radial-gradient(380px 260px at 80% 20%, rgba(139,92,246,.22), transparent 55%),
+        linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      padding: 18px;
+    }
+    .portraitTop{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:10px;
+      color: var(--muted);
+      font-weight:700;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+    }
+    .portraitMid{
+      margin-top: 14px;
+      display:flex;
+      align-items:flex-start;
+      justify-content: space-between;
+      gap:12px;
+    }
+    .avatar{
+      width: 56px; height: 56px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(57,217,138,.55), rgba(139,92,246,.55));
+      display:flex; align-items:center; justify-content:center;
+      font-weight:900;
+      color:#071013;
+      box-shadow: 0 16px 40px rgba(0,0,0,.35);
+      flex: 0 0 auto;
+    }
+    .miniTitle{ font-weight:900; font-size: 16px; margin: 0 0 6px; }
+    .miniText{ color: var(--muted); font-size: 13px; line-height: 1.5; margin:0; }
+    .statRow{ margin-top: 14px; display:grid; grid-template-columns: repeat(3, 1fr); gap:10px; }
+    .stat{
+      border: 1px solid rgba(234,240,255,.12);
+      background: rgba(7,10,15,.35);
+      border-radius: 14px;
+      padding: 10px 10px;
+    }
+    .stat b{ display:block; font-size: 14px; }
+    .stat span{ color: var(--muted); font-size: 12px; }
+
+    /* Sections */
+    section{ margin-top: 26px; }
+    .sectionHeader{
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap:12px; flex-wrap:wrap;
+      margin-bottom: 12px;
+    }
+    .h2{
+      font-size: 24px;
+      margin: 0;
+      letter-spacing: -0.3px;
+    }
+    .hint{ color: var(--muted); font-weight:600; font-size: 13px; }
+    .grid2{
+      display:grid; grid-template-columns: 1fr 1fr; gap: 14px;
+    }
+    @media (max-width: 920px){ .grid2{ grid-template-columns: 1fr; } }
+
+    /* How I Build */
+    .list{
+      margin: 0; padding: 0; list-style: none;
+      display:flex; flex-direction: column; gap:10px;
+    }
+    .li{
+      display:flex; gap:10px; align-items:flex-start;
+      padding: 12px 12px;
+      border-radius: 16px;
+      border: 1px solid rgba(234,240,255,.10);
+      background: rgba(255,255,255,.03);
+    }
+    .check{
+      width:28px; height:28px; border-radius: 10px;
+      display:flex; align-items:center; justify-content:center;
+      background: rgba(57,217,138,.10);
+      border: 1px solid rgba(57,217,138,.30);
+      color: rgba(57,217,138,.95);
+      flex: 0 0 auto;
+    }
+    .li b{ display:block; }
+    .li p{ margin: 2px 0 0; color: var(--muted); font-size: 13px; line-height: 1.45; }
+
+    /* Cards */
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    @media (max-width: 920px){ .cards{ grid-template-columns: 1fr; } }
+    .card{
+      border: 1px solid rgba(234,240,255,.10);
+      background: rgba(14,22,43,.55);
+      border-radius: 18px;
+      padding: 16px;
+      box-shadow: 0 14px 44px rgba(0,0,0,.35);
+    }
+    .cardTitle{ margin:0 0 10px; font-weight:900; letter-spacing:-.2px; }
+    .row{
+      border-top: 1px dashed rgba(234,240,255,.16);
+      padding-top: 10px;
+      margin-top: 10px;
+    }
+    .lbl{
+      font-weight: 900;
+      color: rgba(234,240,255,.90);
+      display:flex; gap:8px; align-items:center;
+    }
+    .chip{
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(139,92,246,.35);
+      background: rgba(139,92,246,.10);
+      color: rgba(167,139,250,.95);
+      font-weight: 800;
+      letter-spacing:.2px;
+    }
+    .card p{ margin: 8px 0 0; color: var(--muted); font-size: 13px; line-height: 1.5; }
+
+    /* Start Here */
+    .start{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 14px;
+      align-items: stretch;
+    }
+    @media (max-width: 920px){ .start{ grid-template-columns: 1fr; } }
+
+    .callout{
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(234,240,255,.12);
+      background:
+        radial-gradient(480px 320px at 15% 20%, rgba(57,217,138,.18), transparent 60%),
+        radial-gradient(480px 320px at 85% 20%, rgba(139,92,246,.18), transparent 60%),
+        rgba(7,10,15,.30);
+    }
+    .callout h3{ margin: 0 0 8px; font-size: 20px; letter-spacing:-.2px; }
+    .callout p{ margin: 0 0 14px; color: var(--muted); line-height: 1.55; }
+    .miniList{ margin:0; padding-left: 16px; color: var(--muted); line-height: 1.6; font-size: 13px; }
+    .social{
+      display:flex; gap: 10px; flex-wrap:wrap;
+      margin-top: 14px;
+    }
+    .sbtn{
+      width: 44px; height: 44px;
+      border-radius: 14px;
+      border: 1px solid rgba(234,240,255,.12);
+      background: rgba(255,255,255,.04);
+      display:flex; align-items:center; justify-content:center;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+      color: rgba(234,240,255,.90);
+    }
+    .sbtn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.06); border-color: rgba(234,240,255,.22); }
+
+    footer{
+      margin-top: 26px;
+      color: rgba(234,240,255,.55);
+      font-size: 12px;
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+      border-top: 1px solid rgba(234,240,255,.10);
+      padding-top: 16px;
+    }
+    .tinyLink{
+      color: rgba(234,240,255,.75);
+      border-bottom: 1px dashed rgba(234,240,255,.28);
+    }
+  </style>
 </head>
+
 <body>
-    <main>
-        <div class="intro">Hello, I'm Maurice!</div>
-        <!--<div class="tagline">All-Star Dev | Code Fanatic | Linux Hacker | Bleh</div>-->
-        <!-- Find your icons from here - https://fontawesome.com/icons?d=gallery&s=brands -->
-        <div class="icons-social">
-            <a target="_blank" href="https://github.com/thesmashcoder"><i class="fab fa-github"></i></a>
-            <a target="_blank" href="https://twitter.com/thesmashcoder"><i class="fab fa-twitter"></i></a>
-            <a target="_blank" href="https://stackoverflow.com/story/thesmashcoder"><i class="fab fa-stack-overflow"></i></a>
-            <a target="_blank" href="https://www.linkedin.com/in/thesmashcoder"><i class="fab fa-linkedin"></i></a>
-            <!--<a target="_blank" href="https://medium.com/@flexdinesh"><i class="fab fa-medium"></i></a>-->
-            <a target="_blank" href="https://www.freecodecamp.org"><i class="fab fa-free-code-camp"></i></a>
-            <!--<a target="_blank" href="https://www.behance.net"><i class="fab fa-behance"></i></a>-->
-            <a target="_blank" href="https://codepen.io"><i class="fab fa-codepen"></i></a>
+  <div class="wrap">
+
+    <!-- NAV -->
+    <div class="nav">
+      <div class="brand">
+        <span class="dot"></span>
+        <span>theSMASHcoder</span>
+      </div>
+
+      <div class="navlinks">
+        <a class="pill" href="#projects">Projects</a>
+        <a class="pill" href="#how">How I Build</a>
+        <a class="pill" href="#start">Start Here</a>
+        <a class="pill" href="mailto:smashprohq@gmail.com">Email</a>
+      </div>
+    </div>
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="panel heroLeft">
+        <div class="kicker">
+          <span class="kbadge">Fearless execution</span>
+          <span>for builders who want results</span>
         </div>
-    </main>
+
+        <h1>I Build Systems<br />That <span class="accent">Actually Ship</span></h1>
+
+        <div class="roleline">Developer • Systems Architect • Personal Coach</div>
+
+        <p class="sub">
+          I help builders turn ideas into working products, and help people rebuild discipline and direction.
+          If the job needs doing, big or small, we move.
+        </p>
+
+        <div class="ctaRow">
+          <a class="btn btnPrimary" href="#projects"><i class="fas fa-rocket"></i> View Projects</a>
+          <a class="btn" href="#start"><i class="fas fa-handshake"></i> Work With Me</a>
+          <a class="btn" href="https://www.linkedin.com/in/thesmashcoder" target="_blank" rel="noreferrer"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        </div>
+      </div>
+
+      <div class="panel heroRight">
+        <div class="portrait">
+          <div class="portraitTop">
+            <span>Builder Mode</span>
+            <span class="accent" style="font-weight:900;">SMASH</span>
+          </div>
+
+          <div class="portraitMid">
+            <div>
+              <p class="miniTitle">Maurice Jordan</p>
+              <p class="miniText">I smash complexity with clarity, systems, and shipping consistently.</p>
+            </div>
+            <div class="avatar">MJ</div>
+          </div>
+
+          <div class="statRow">
+            <div class="stat"><b>Systems</b><span>Architecture • APIs</span></div>
+            <div class="stat"><b>Shipping</b><span>Small → scalable</span></div>
+            <div class="stat"><b>Coaching</b><span>Discipline • direction</span></div>
+          </div>
+
+          <div class="social" style="margin-top:14px;">
+            <a class="sbtn" target="_blank" rel="noreferrer" href="https://github.com/thesmashcoder" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a class="sbtn" target="_blank" rel="noreferrer" href="https://twitter.com/thesmashcoder" aria-label="Twitter/X"><i class="fab fa-twitter"></i></a>
+            <a class="sbtn" target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/thesmashcoder" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a class="sbtn" target="_blank" rel="noreferrer" href="https://codepen.io" aria-label="CodePen"><i class="fab fa-codepen"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HOW I BUILD -->
+    <section id="how">
+      <div class="sectionHeader">
+        <h2 class="h2">How I Build</h2>
+        <div class="hint">Smash complexity. Ship solutions.</div>
+      </div>
+
+      <div class="grid2">
+        <div class="panel" style="padding:16px; border-radius:18px;">
+          <ul class="list">
+            <li class="li">
+              <div class="check"><i class="fas fa-check"></i></div>
+              <div>
+                <b>I start with clarity, not tools</b>
+                <p>Define the outcome, constraints, and success metrics before writing code.</p>
+              </div>
+            </li>
+            <li class="li">
+              <div class="check"><i class="fas fa-check"></i></div>
+              <div>
+                <b>I design systems before writing code</b>
+                <p>Architecture first so the product can grow without breaking.</p>
+              </div>
+            </li>
+            <li class="li">
+              <div class="check"><i class="fas fa-check"></i></div>
+              <div>
+                <b>I ship small, then scale</b>
+                <p>Release the smallest valuable thing, measure, and iterate fast.</p>
+              </div>
+            </li>
+            <li class="li">
+              <div class="check"><i class="fas fa-check"></i></div>
+              <div>
+                <b>I document so others can move fast</b>
+                <p>Clear docs and handoffs keep teams from getting stuck.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="panel" style="padding:16px; border-radius:18px;">
+          <div class="callout" style="height:100%;">
+            <h3>What you get</h3>
+            <p>
+              A working system, a clean path forward, and the discipline to keep it moving.
+              I’m not here for noise. I’m here for outcomes.
+            </p>
+            <ul class="miniList">
+              <li>Architecture + implementation that’s easy to maintain</li>
+              <li>Practical automation and integrations</li>
+              <li>Clear documentation and next-step roadmap</li>
+              <li>Coaching support for consistency and execution</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="sectionHeader">
+        <h2 class="h2">Problems I Solved</h2>
+        <div class="hint">Real-world examples of shipping systems</div>
+      </div>
+
+      <div class="cards">
+        <div class="card">
+          <h3 class="cardTitle">Delivery slowed by manual work</h3>
+          <div class="row">
+            <div class="lbl">Problem <span class="chip">Ops</span></div>
+            <p>Manual steps and unclear handoffs caused delays and mistakes.</p>
+          </div>
+          <div class="row">
+            <div class="lbl">System <span class="chip">Automation</span></div>
+            <p>Automation + clean architecture patterns to reduce friction.</p>
+          </div>
+          <div class="row">
+            <div class="lbl">Outcome <span class="chip">Shipping</span></div>
+            <p>Faster releases and fewer errors through repeatable workflows.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 class="cardTitle">Shopify spend without profit clarity</h3>
+          <div class="row">
+            <div class="lbl">Problem <span class="chip">Ecom</span></div>
+            <p>Owners were spending but didn’t know which products were actually paying them back.</p>
+          </div>
+          <div class="row">
+            <div class="lbl">System <span class="chip">Analytics</span></div>
+            <p>Dashboard + funnel logic to track spend, sales, and what’s truly working.</p>
+          </div>
+          <div class="row">
+            <div class="lbl">Outcome <span class="chip">Profit</span></div>
+            <p>Smarter decisions, better focus, less wasted spend.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 class="cardTitle">Founders stuck in messy tech</h3>
+          <div class="row">
+            <div class="lbl">Problem <span class="chip">Build</span></div>
+            <p>Too many tools, no structure, and features that never shipped.</p>
+          </div>
+          <div class="row">
+            <div class="lbl">System <span class="chip">Framework</span></div>
+            <p>Pragmatic roadmap + “ship small” execution loop with clean boundaries.</p>
+          </div>
+          <div class="row">
+            <div class="lbl">Outcome <span class="chip">Momentum</span></div>
+            <p>Leaner systems and faster pivots without breaking everything.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- START HERE -->
+    <section id="start">
+      <div class="sectionHeader">
+        <h2 class="h2">Start Here</h2>
+        <div class="hint">Personal Coach for builders</div>
+      </div>
+
+      <div class="start">
+        <div class="panel" style="padding:16px; border-radius:18px;">
+          <div class="callout">
+            <h3>I’m a Personal Coach for Builders</h3>
+            <p>
+              If you’re stuck, inconsistent, or overwhelmed, we rebuild discipline and direction.
+              Fitness, life, business, or tech: the framework is the same. Execute with structure.
+            </p>
+            <ul class="miniList">
+              <li><b>Clarity Call:</b> 20 minutes to define the real problem</li>
+              <li><b>Execution Plan:</b> your next 7–14 days mapped clearly</li>
+              <li><b>Accountability:</b> simple checks that keep momentum alive</li>
+            </ul>
+
+            <div class="ctaRow" style="margin-top:14px;">
+              <a class="btn btnPrimary" href="mailto:smashprohq@gmail.com?subject=Clarity%20Call%20-%20theSMASHcoder"><i class="fas fa-envelope"></i> Book a Clarity Call</a>
+              <a class="btn" href="https://www.instagram.com/fatboyfitsc/" target="_blank" rel="noreferrer"><i class="fab fa-instagram"></i> Instagram</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel" style="padding:16px; border-radius:18px;">
+          <div class="callout" style="height:100%;">
+            <h3>Contact</h3>
+            <p>Best way to reach me is email. Social links below.</p>
+            <div class="social">
+              <a class="sbtn" target="_blank" rel="noreferrer" href="https://github.com/thesmashcoder" aria-label="GitHub"><i class="fab fa-github"></i></a>
+              <a class="sbtn" target="_blank" rel="noreferrer" href="https://twitter.com/thesmashcoder" aria-label="Twitter/X"><i class="fab fa-twitter"></i></a>
+              <a class="sbtn" target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/thesmashcoder" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+              <a class="sbtn" href="mailto:smashprohq@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+
+            <div style="margin-top:14px; color: var(--muted); font-size: 13px; line-height:1.6;">
+              <b>Brand:</b> Green = growth. Purple = wisdom. <br/>
+              <b>Mindset:</b> Hulk-level fearlessness. Get the job done.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>© <span id="y"></span> Maurice Jordan • theSMASHcoder</div>
+      <div>
+        <a class="tinyLink" href="#start">Start Here</a>
+        &nbsp;·&nbsp;
+        <a class="tinyLink" href="https://www.linkedin.com/in/thesmashcoder" target="_blank" rel="noreferrer">LinkedIn</a>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
