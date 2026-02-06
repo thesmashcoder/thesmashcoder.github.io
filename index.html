@@ -1,14 +1,13 @@
 <!--
-V2 DROP-IN UPDATE (uses the images we generated)
-✅ What to add to your repo (suggested filenames):
-/assets/images/mj-portrait.png          (hero “Builder Mode” portrait)
-/assets/images/mj-how-build.png         (How I Build scene)
-/assets/images/proj-delivery.png        (Problems card #1 image)
-/assets/images/proj-shopify.png         (Problems card #2 image)
-/assets/images/proj-founders.png        (Problems card #3 image)
-/assets/images/mj-coach.jpg             (Start Here coach image)
+V2.1 FULL DROP-IN UPDATE (fixed odd rendering + uses your generated images)
 
-If your files have different names, just update the src paths below.
+✅ Expected repo files:
+/assets/images/mj-portrait.png
+/assets/images/mj-how-build.png
+/assets/images/proj-delivery.png
+/assets/images/proj-shopify.png
+/assets/images/proj-founders.png
+/assets/images/mj-coach.jpg
 -->
 
 <!DOCTYPE html>
@@ -127,6 +126,7 @@ If your files have different names, just update the src paths below.
     .kicker{
       display:inline-flex; gap:10px; align-items:center;
       color: var(--muted); font-weight:600;
+      flex-wrap: wrap;
     }
     .kbadge{
       border:1px solid rgba(57,217,138,.35);
@@ -136,6 +136,7 @@ If your files have different names, just update the src paths below.
       border-radius: 999px;
       font-size: 12px;
       letter-spacing:.2px;
+      white-space: nowrap;
     }
     h1{
       margin: 14px 0 10px;
@@ -170,6 +171,7 @@ If your files have different names, just update the src paths below.
       border: 1px solid rgba(234,240,255,.14);
       background: rgba(255,255,255,.04);
       transition: transform .12s ease, background .12s ease, border-color .12s ease;
+      white-space: nowrap;
     }
     .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.06); border-color: rgba(234,240,255,.22); }
     .btnPrimary{
@@ -180,13 +182,12 @@ If your files have different names, just update the src paths below.
     .btnPrimary:hover{ background: linear-gradient(135deg, rgba(57,217,138,1), rgba(139,92,246,1)); }
     .btn i{ opacity:.95; }
 
-    /* Right Hero Card */
+    /* Right Hero Card (FIXED: removed min-height + added gap to prevent weird squish) */
     .heroRight{
       padding: 22px;
       display:flex;
       flex-direction: column;
-      justify-content: space-between;
-      min-height: 260px;
+      gap: 12px;
       position:relative;
     }
     .portrait{
@@ -215,7 +216,7 @@ If your files have different names, just update the src paths below.
       gap:12px;
     }
 
-    /* NEW: Image styles */
+    /* Image styles */
     .avatar-img{
       width: 64px;
       height: 64px;
@@ -233,6 +234,7 @@ If your files have different names, just update the src paths below.
       border: 1px solid rgba(234,240,255,.12);
       box-shadow: 0 18px 50px rgba(0,0,0,.55);
       background: rgba(255,255,255,.03);
+      aspect-ratio: 16 / 9; /* prevents layout shift */
     }
     .card-img{
       width: 100%;
@@ -242,6 +244,7 @@ If your files have different names, just update the src paths below.
       border: 1px solid rgba(234,240,255,.10);
       margin-bottom: 12px;
       background: rgba(255,255,255,.03);
+      aspect-ratio: 16 / 9; /* prevents layout shift */
     }
     .coach-img{
       width: 100%;
@@ -252,11 +255,15 @@ If your files have different names, just update the src paths below.
       box-shadow: 0 22px 60px rgba(0,0,0,.60);
       margin-bottom: 14px;
       background: rgba(255,255,255,.03);
+      aspect-ratio: 16 / 9; /* keeps consistent */
     }
 
     .miniTitle{ font-weight:900; font-size: 16px; margin: 0 0 6px; }
     .miniText{ color: var(--muted); font-size: 13px; line-height: 1.5; margin:0; }
     .statRow{ margin-top: 14px; display:grid; grid-template-columns: repeat(3, 1fr); gap:10px; }
+    @media (max-width: 520px){
+      .statRow{ grid-template-columns: 1fr; }
+    }
     .stat{
       border: 1px solid rgba(234,240,255,.12);
       background: rgba(7,10,15,.35);
@@ -267,7 +274,7 @@ If your files have different names, just update the src paths below.
     .stat span{ color: var(--muted); font-size: 12px; }
 
     /* Sections */
-    section{ margin-top: 26px; }
+    section{ margin-top: 26px; scroll-margin-top: 90px; }
     .sectionHeader{
       display:flex; align-items:flex-end; justify-content:space-between;
       gap:12px; flex-wrap:wrap;
@@ -365,6 +372,7 @@ If your files have different names, just update the src paths below.
     .callout h3{ margin: 0 0 8px; font-size: 20px; letter-spacing:-.2px; }
     .callout p{ margin: 0 0 14px; color: var(--muted); line-height: 1.55; }
     .miniList{ margin:0; padding-left: 16px; color: var(--muted); line-height: 1.6; font-size: 13px; }
+
     .social{
       display:flex; gap: 10px; flex-wrap:wrap;
       margin-top: 14px;
@@ -412,7 +420,8 @@ If your files have different names, just update the src paths below.
         <a class="pill" href="#projects">Projects</a>
         <a class="pill" href="#how">How I Build</a>
         <a class="pill" href="#start">Start Here</a>
-        <a class="pill" href="mailto:maurice@smashpro.app>Email</a>
+        <!-- FIXED: broken quote -->
+        <a class="pill" href="mailto:maurice@smashpro.app">Email</a>
       </div>
     </div>
 
@@ -453,7 +462,6 @@ If your files have different names, just update the src paths below.
               <p class="miniText">I smash complexity with clarity, systems, and shipping consistently.</p>
             </div>
 
-            <!-- V2: hero portrait image -->
             <img
               class="avatar-img"
               src="assets/images/mj-portrait.png"
@@ -519,7 +527,6 @@ If your files have different names, just update the src paths below.
           </ul>
         </div>
 
-        <!-- V2: add “How I Build” scene image + the callout -->
         <div class="panel" style="padding:16px; border-radius:18px;">
           <img
             class="section-img"
@@ -527,7 +534,7 @@ If your files have different names, just update the src paths below.
             alt="How I build: systems thinking scene"
             loading="lazy"
           />
-          <div class="callout" style="height:100%; margin-top:14px;">
+          <div class="callout" style="margin-top:14px;">
             <h3>What you get</h3>
             <p>
               A working system, a clean path forward, and the discipline to keep it moving.
@@ -553,9 +560,7 @@ If your files have different names, just update the src paths below.
 
       <div class="cards">
         <div class="card">
-          <!-- V2: card image -->
           <img class="card-img" src="assets/images/proj-delivery.png" alt="Delivery automation project" loading="lazy" />
-
           <h3 class="cardTitle">Delivery slowed by manual work</h3>
           <div class="row">
             <div class="lbl">Problem <span class="chip">Ops</span></div>
@@ -572,9 +577,7 @@ If your files have different names, just update the src paths below.
         </div>
 
         <div class="card">
-          <!-- V2: card image -->
           <img class="card-img" src="assets/images/proj-shopify.png" alt="Shopify profit clarity project" loading="lazy" />
-
           <h3 class="cardTitle">Shopify spend without profit clarity</h3>
           <div class="row">
             <div class="lbl">Problem <span class="chip">Ecom</span></div>
@@ -591,9 +594,7 @@ If your files have different names, just update the src paths below.
         </div>
 
         <div class="card">
-          <!-- V2: card image -->
           <img class="card-img" src="assets/images/proj-founders.png" alt="Founder coaching + systems project" loading="lazy" />
-
           <h3 class="cardTitle">Founders stuck in messy tech</h3>
           <div class="row">
             <div class="lbl">Problem <span class="chip">Build</span></div>
@@ -621,7 +622,6 @@ If your files have different names, just update the src paths below.
       <div class="start">
         <div class="panel" style="padding:16px; border-radius:18px;">
           <div class="callout">
-            <!-- V2: coach image -->
             <img class="coach-img" src="assets/images/mj-coach.jpg" alt="Coach portrait" loading="lazy" />
 
             <h3>I’m a Personal Coach for Builders</h3>
@@ -650,7 +650,7 @@ If your files have different names, just update the src paths below.
               <a class="sbtn" target="_blank" rel="noreferrer" href="https://github.com/thesmashcoder" aria-label="GitHub"><i class="fab fa-github"></i></a>
               <a class="sbtn" target="_blank" rel="noreferrer" href="https://twitter.com/thesmashcoder" aria-label="Twitter/X"><i class="fab fa-twitter"></i></a>
               <a class="sbtn" target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/thesmashcoder" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-              <a class="sbtn" href="mailto:smashprohq@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+              <a class="sbtn" href="mailto:maurice@smashpro.app" aria-label="Email"><i class="fas fa-envelope"></i></a>
             </div>
 
             <div style="margin-top:14px; color: var(--muted); font-size: 13px; line-height:1.6;">
