@@ -1,3 +1,16 @@
+<!--
+V2 DROP-IN UPDATE (uses the images we generated)
+✅ What to add to your repo (suggested filenames):
+/assets/images/mj-portrait.png          (hero “Builder Mode” portrait)
+/assets/images/mj-how-build.png         (How I Build scene)
+/assets/images/proj-delivery.png        (Problems card #1 image)
+/assets/images/proj-shopify.png         (Problems card #2 image)
+/assets/images/proj-founders.png        (Problems card #3 image)
+/assets/images/mj-coach.jpg             (Start Here coach image)
+
+If your files have different names, just update the src paths below.
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -201,16 +214,46 @@
       justify-content: space-between;
       gap:12px;
     }
-    .avatar{
-      width: 56px; height: 56px;
+
+    /* NEW: Image styles */
+    .avatar-img{
+      width: 64px;
+      height: 64px;
       border-radius: 16px;
-      background: linear-gradient(135deg, rgba(57,217,138,.55), rgba(139,92,246,.55));
-      display:flex; align-items:center; justify-content:center;
-      font-weight:900;
-      color:#071013;
-      box-shadow: 0 16px 40px rgba(0,0,0,.35);
+      object-fit: cover;
+      border: 1px solid rgba(234,240,255,.15);
+      box-shadow: 0 16px 40px rgba(0,0,0,.45);
       flex: 0 0 auto;
+      background: rgba(255,255,255,.05);
     }
+    .section-img{
+      width: 100%;
+      border-radius: 16px;
+      object-fit: cover;
+      border: 1px solid rgba(234,240,255,.12);
+      box-shadow: 0 18px 50px rgba(0,0,0,.55);
+      background: rgba(255,255,255,.03);
+    }
+    .card-img{
+      width: 100%;
+      height: 140px;
+      border-radius: 14px;
+      object-fit: cover;
+      border: 1px solid rgba(234,240,255,.10);
+      margin-bottom: 12px;
+      background: rgba(255,255,255,.03);
+    }
+    .coach-img{
+      width: 100%;
+      height: 220px;
+      border-radius: 16px;
+      object-fit: cover;
+      border: 1px solid rgba(234,240,255,.14);
+      box-shadow: 0 22px 60px rgba(0,0,0,.60);
+      margin-bottom: 14px;
+      background: rgba(255,255,255,.03);
+    }
+
     .miniTitle{ font-weight:900; font-size: 16px; margin: 0 0 6px; }
     .miniText{ color: var(--muted); font-size: 13px; line-height: 1.5; margin:0; }
     .statRow{ margin-top: 14px; display:grid; grid-template-columns: repeat(3, 1fr); gap:10px; }
@@ -409,7 +452,14 @@
               <p class="miniTitle">Maurice Jordan</p>
               <p class="miniText">I smash complexity with clarity, systems, and shipping consistently.</p>
             </div>
-            <div class="avatar">MJ</div>
+
+            <!-- V2: hero portrait image -->
+            <img
+              class="avatar-img"
+              src="assets/images/mj-portrait.png"
+              alt="Builder portrait"
+              loading="lazy"
+            />
           </div>
 
           <div class="statRow">
@@ -469,8 +519,15 @@
           </ul>
         </div>
 
+        <!-- V2: add “How I Build” scene image + the callout -->
         <div class="panel" style="padding:16px; border-radius:18px;">
-          <div class="callout" style="height:100%;">
+          <img
+            class="section-img"
+            src="assets/images/mj-how-build.png"
+            alt="How I build: systems thinking scene"
+            loading="lazy"
+          />
+          <div class="callout" style="height:100%; margin-top:14px;">
             <h3>What you get</h3>
             <p>
               A working system, a clean path forward, and the discipline to keep it moving.
@@ -496,6 +553,9 @@
 
       <div class="cards">
         <div class="card">
+          <!-- V2: card image -->
+          <img class="card-img" src="assets/images/proj-delivery.png" alt="Delivery automation project" loading="lazy" />
+
           <h3 class="cardTitle">Delivery slowed by manual work</h3>
           <div class="row">
             <div class="lbl">Problem <span class="chip">Ops</span></div>
@@ -512,6 +572,9 @@
         </div>
 
         <div class="card">
+          <!-- V2: card image -->
+          <img class="card-img" src="assets/images/proj-shopify.png" alt="Shopify profit clarity project" loading="lazy" />
+
           <h3 class="cardTitle">Shopify spend without profit clarity</h3>
           <div class="row">
             <div class="lbl">Problem <span class="chip">Ecom</span></div>
@@ -528,6 +591,9 @@
         </div>
 
         <div class="card">
+          <!-- V2: card image -->
+          <img class="card-img" src="assets/images/proj-founders.png" alt="Founder coaching + systems project" loading="lazy" />
+
           <h3 class="cardTitle">Founders stuck in messy tech</h3>
           <div class="row">
             <div class="lbl">Problem <span class="chip">Build</span></div>
@@ -555,6 +621,9 @@
       <div class="start">
         <div class="panel" style="padding:16px; border-radius:18px;">
           <div class="callout">
+            <!-- V2: coach image -->
+            <img class="coach-img" src="assets/images/mj-coach.jpg" alt="Coach portrait" loading="lazy" />
+
             <h3>I’m a Personal Coach for Builders</h3>
             <p>
               If you’re stuck, inconsistent, or overwhelmed, we rebuild discipline and direction.
