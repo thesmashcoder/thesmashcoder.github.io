@@ -1,13 +1,21 @@
 <!--
-V2.1 FULL DROP-IN UPDATE (fixed odd rendering + uses your generated images)
+V2.2 FULL DROP-IN UPDATE
+✅ Cleaner image rendering (no weird stretching / squish / gaps)
+✅ Hero image swaps: horizontal on desktop + portrait on mobile (TWO FILES)
 
 ✅ Expected repo files:
-/assets/images/mj-portrait.png
-/assets/images/mj-how-build.png
-/assets/images/proj-delivery.png
-/assets/images/proj-shopify.png
-/assets/images/proj-founders.png
-/assets/images/mj-coach.jpg
+  /assets/images/mj-portrait.png
+  /assets/images/mj-how-build.png
+  /assets/images/proj-delivery.png
+  /assets/images/proj-shopify.png
+  /assets/images/proj-founders.png
+  /assets/images/mj-coach.jpg
+
+✅ NEW hero image files (add these):
+  /assets/images/mj-hero-desktop.png   (wide landscape)
+  /assets/images/mj-hero-mobile.png    (portrait)
+
+If your files have different names, update the src paths below.
 -->
 
 <!DOCTYPE html>
@@ -96,6 +104,7 @@ V2.1 FULL DROP-IN UPDATE (fixed odd rendering + uses your generated images)
       color: var(--muted);
       background: rgba(255,255,255,.03);
       transition: transform .12s ease, border-color .12s ease, background .12s ease;
+      white-space: nowrap;
     }
     .pill:hover{
       transform: translateY(-1px);
@@ -115,6 +124,7 @@ V2.1 FULL DROP-IN UPDATE (fixed odd rendering + uses your generated images)
     @media (max-width: 920px){
       .hero{ grid-template-columns: 1fr; }
     }
+
     .panel{
       border: 1px solid var(--line);
       background: rgba(14,22,43,.70);
@@ -122,6 +132,7 @@ V2.1 FULL DROP-IN UPDATE (fixed odd rendering + uses your generated images)
       box-shadow: var(--shadow);
       overflow:hidden;
     }
+
     .heroLeft{ padding: 28px 26px; position:relative; }
     .kicker{
       display:inline-flex; gap:10px; align-items:center;
@@ -182,7 +193,7 @@ V2.1 FULL DROP-IN UPDATE (fixed odd rendering + uses your generated images)
     .btnPrimary:hover{ background: linear-gradient(135deg, rgba(57,217,138,1), rgba(139,92,246,1)); }
     .btn i{ opacity:.95; }
 
-    /* Right Hero Card (FIXED: removed min-height + added gap to prevent weird squish) */
+    /* Right Hero Card */
     .heroRight{
       padding: 22px;
       display:flex;
@@ -190,6 +201,7 @@ V2.1 FULL DROP-IN UPDATE (fixed odd rendering + uses your generated images)
       gap: 12px;
       position:relative;
     }
+
     .portrait{
       border-radius: 18px;
       border: 1px solid rgba(234,240,255,.12);
@@ -216,47 +228,66 @@ V2.1 FULL DROP-IN UPDATE (fixed odd rendering + uses your generated images)
       gap:12px;
     }
 
-    /* Image styles */
-    .avatar-img{
+    /* NEW: Hero media (desktop horizontal / mobile portrait) */
+    .heroMedia{
+      border-radius: 18px;
+      border: 1px solid rgba(234,240,255,.12);
+      overflow:hidden;
+      background: rgba(255,255,255,.03);
+      box-shadow: 0 18px 50px rgba(0,0,0,.55);
+    }
+    .heroMedia img{
+      display:block;          /* removes odd baseline gap */
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    /* Default desktop: wide crop */
+    .heroMedia{ aspect-ratio: 16 / 9; }
+    /* Mobile: portrait crop */
+    @media (max-width: 920px){
+      .heroMedia{ aspect-ratio: 4 / 5; }
+    }
+
+    /* Image rendering system (clean cards) */
+    .imgFrame{
+      border-radius: 16px;
+      border: 1px solid rgba(234,240,255,.10);
+      background: rgba(255,255,255,.03);
+      overflow:hidden;
+    }
+    .imgFrame img{
+      display:block;          /* removes odd gaps */
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      object-position: center;
+      transform: translateZ(0); /* helps some browsers with crispness */
+    }
+
+    /* Small avatar */
+    .avatarFrame{
       width: 64px;
       height: 64px;
       border-radius: 16px;
-      object-fit: cover;
+      overflow:hidden;
       border: 1px solid rgba(234,240,255,.15);
+      background: rgba(255,255,255,.05);
       box-shadow: 0 16px 40px rgba(0,0,0,.45);
       flex: 0 0 auto;
-      background: rgba(255,255,255,.05);
     }
-    .section-img{
-      width: 100%;
-      border-radius: 16px;
+    .avatarFrame img{
+      display:block;
+      width:100%;
+      height:100%;
       object-fit: cover;
-      border: 1px solid rgba(234,240,255,.12);
-      box-shadow: 0 18px 50px rgba(0,0,0,.55);
-      background: rgba(255,255,255,.03);
-      aspect-ratio: 16 / 9; /* prevents layout shift */
     }
-    .card-img{
-      width: 100%;
-      height: 140px;
-      border-radius: 14px;
-      object-fit: cover;
-      border: 1px solid rgba(234,240,255,.10);
-      margin-bottom: 12px;
-      background: rgba(255,255,255,.03);
-      aspect-ratio: 16 / 9; /* prevents layout shift */
-    }
-    .coach-img{
-      width: 100%;
-      height: 220px;
-      border-radius: 16px;
-      object-fit: cover;
-      border: 1px solid rgba(234,240,255,.14);
-      box-shadow: 0 22px 60px rgba(0,0,0,.60);
-      margin-bottom: 14px;
-      background: rgba(255,255,255,.03);
-      aspect-ratio: 16 / 9; /* keeps consistent */
-    }
+
+    /* Section / card image aspect ratios */
+    .howImg{ aspect-ratio: 16 / 9; box-shadow: 0 18px 50px rgba(0,0,0,.55); }
+    .projImg{ aspect-ratio: 16 / 9; }
+    .coachImg{ aspect-ratio: 16 / 9; box-shadow: 0 22px 60px rgba(0,0,0,.60); }
 
     .miniTitle{ font-weight:900; font-size: 16px; margin: 0 0 6px; }
     .miniText{ color: var(--muted); font-size: 13px; line-height: 1.5; margin:0; }
@@ -327,6 +358,7 @@ V2.1 FULL DROP-IN UPDATE (fixed odd rendering + uses your generated images)
       border-radius: 18px;
       padding: 16px;
       box-shadow: 0 14px 44px rgba(0,0,0,.35);
+      overflow:hidden; /* keeps image + glow tidy */
     }
     .cardTitle{ margin:0 0 10px; font-weight:900; letter-spacing:-.2px; }
     .row{
@@ -420,7 +452,6 @@ V2.1 FULL DROP-IN UPDATE (fixed odd rendering + uses your generated images)
         <a class="pill" href="#projects">Projects</a>
         <a class="pill" href="#how">How I Build</a>
         <a class="pill" href="#start">Start Here</a>
-        <!-- FIXED: broken quote -->
         <a class="pill" href="mailto:maurice@smashpro.app">Email</a>
       </div>
     </div>
@@ -450,6 +481,17 @@ V2.1 FULL DROP-IN UPDATE (fixed odd rendering + uses your generated images)
       </div>
 
       <div class="panel heroRight">
+
+        <!-- NEW: Hero image (desktop wide, mobile portrait) -->
+        <div class="heroMedia" aria-label="Hero image">
+          <picture>
+            <!-- Mobile portrait first -->
+            <source media="(max-width: 920px)" srcset="assets/images/mj-hero-mobile.png" />
+            <!-- Desktop wide -->
+            <img src="assets/images/mj-hero-desktop.png" alt="Maurice Jordan hero visual" loading="eager" />
+          </picture>
+        </div>
+
         <div class="portrait">
           <div class="portraitTop">
             <span>Builder Mode</span>
@@ -462,12 +504,9 @@ V2.1 FULL DROP-IN UPDATE (fixed odd rendering + uses your generated images)
               <p class="miniText">I smash complexity with clarity, systems, and shipping consistently.</p>
             </div>
 
-            <img
-              class="avatar-img"
-              src="assets/images/mj-portrait.png"
-              alt="Builder portrait"
-              loading="lazy"
-            />
+            <div class="avatarFrame" title="Builder portrait">
+              <img src="assets/images/mj-portrait.png" alt="Builder portrait" loading="lazy" />
+            </div>
           </div>
 
           <div class="statRow">
@@ -528,12 +567,10 @@ V2.1 FULL DROP-IN UPDATE (fixed odd rendering + uses your generated images)
         </div>
 
         <div class="panel" style="padding:16px; border-radius:18px;">
-          <img
-            class="section-img"
-            src="assets/images/mj-how-build.png"
-            alt="How I build: systems thinking scene"
-            loading="lazy"
-          />
+          <div class="imgFrame howImg">
+            <img src="assets/images/mj-how-build.png" alt="How I build: systems thinking scene" loading="lazy" />
+          </div>
+
           <div class="callout" style="margin-top:14px;">
             <h3>What you get</h3>
             <p>
@@ -560,8 +597,11 @@ V2.1 FULL DROP-IN UPDATE (fixed odd rendering + uses your generated images)
 
       <div class="cards">
         <div class="card">
-          <img class="card-img" src="assets/images/proj-delivery.png" alt="Delivery automation project" loading="lazy" />
-          <h3 class="cardTitle">Delivery slowed by manual work</h3>
+          <div class="imgFrame projImg">
+            <img src="assets/images/proj-delivery.png" alt="Delivery automation project" loading="lazy" />
+          </div>
+
+          <h3 class="cardTitle" style="margin-top:12px;">Delivery slowed by manual work</h3>
           <div class="row">
             <div class="lbl">Problem <span class="chip">Ops</span></div>
             <p>Manual steps and unclear handoffs caused delays and mistakes.</p>
@@ -577,8 +617,11 @@ V2.1 FULL DROP-IN UPDATE (fixed odd rendering + uses your generated images)
         </div>
 
         <div class="card">
-          <img class="card-img" src="assets/images/proj-shopify.png" alt="Shopify profit clarity project" loading="lazy" />
-          <h3 class="cardTitle">Shopify spend without profit clarity</h3>
+          <div class="imgFrame projImg">
+            <img src="assets/images/proj-shopify.png" alt="Shopify profit clarity project" loading="lazy" />
+          </div>
+
+          <h3 class="cardTitle" style="margin-top:12px;">Shopify spend without profit clarity</h3>
           <div class="row">
             <div class="lbl">Problem <span class="chip">Ecom</span></div>
             <p>Owners were spending but didn’t know which products were actually paying them back.</p>
@@ -594,8 +637,11 @@ V2.1 FULL DROP-IN UPDATE (fixed odd rendering + uses your generated images)
         </div>
 
         <div class="card">
-          <img class="card-img" src="assets/images/proj-founders.png" alt="Founder coaching + systems project" loading="lazy" />
-          <h3 class="cardTitle">Founders stuck in messy tech</h3>
+          <div class="imgFrame projImg">
+            <img src="assets/images/proj-founders.png" alt="Founder coaching + systems project" loading="lazy" />
+          </div>
+
+          <h3 class="cardTitle" style="margin-top:12px;">Founders stuck in messy tech</h3>
           <div class="row">
             <div class="lbl">Problem <span class="chip">Build</span></div>
             <p>Too many tools, no structure, and features that never shipped.</p>
@@ -622,9 +668,11 @@ V2.1 FULL DROP-IN UPDATE (fixed odd rendering + uses your generated images)
       <div class="start">
         <div class="panel" style="padding:16px; border-radius:18px;">
           <div class="callout">
-            <img class="coach-img" src="assets/images/mj-coach.jpg" alt="Coach portrait" loading="lazy" />
+            <div class="imgFrame coachImg">
+              <img src="assets/images/mj-coach.jpg" alt="Coach portrait" loading="lazy" />
+            </div>
 
-            <h3>I’m a Personal Coach for Builders</h3>
+            <h3 style="margin-top:14px;">I’m a Personal Coach for Builders</h3>
             <p>
               If you’re stuck, inconsistent, or overwhelmed, we rebuild discipline and direction.
               Fitness, life, business, or tech: the framework is the same. Execute with structure.
