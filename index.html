@@ -534,12 +534,26 @@ V3 FULL DROP-IN (Guided Mobile Experience)
         </div>
 
         <div class="panel heroMedia">
-          <div class="heroFrame">
-            <!-- desktop -->
-            <img class="heroImg heroDesktop" src="assets/images/hero-desktop.png" alt="Hero banner wide" loading="eager" />
-            <!-- mobile -->
-            <img class="heroImg heroMobile" src="assets/images/hero-mobile.png" alt="Hero banner portrait" loading="lazy" />
-          </div>
+  <div class="heroFrame">
+
+    <picture>
+      <!-- Mobile portrait -->
+      <source
+        media="(max-width: 720px)"
+        srcset="assets/images/mj-hero-mobile.png">
+
+      <!-- Desktop landscape -->
+      <img
+        src="assets/images/mj-hero-desktop.png"
+        alt="theSMASHcoder hero banner"
+        class="heroImg"
+        loading="eager"
+        decoding="async"
+      />
+    </picture>
+
+  </div>
+</div>
 
           <!-- Builder Mode content moved here (into Start) -->
           <div class="callout" style="margin-top:12px;">
