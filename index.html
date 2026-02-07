@@ -1,22 +1,22 @@
 <!--
-V3 FULL DROP-IN (Guided Mobile Experience)
-✅ Goals:
-- Sticky "Journey Header" that guides the experience (Start → Build → Proof → Contact)
-- No left logo/brand in nav
-- Cards start directly under sticky header (no awkward gap)
-- Builder Mode card removed from hero; its content is merged into Start Here
-- Click-through UX: Next button scrolls to the next section
-- Clean image rendering (consistent ratios, no odd cropping)
-- Hero image: desktop uses horizontal, mobile uses portrait (two files)
+V4 FULL DROP-IN (Guided Mobile Experience + Dev Music / Podcast / Monetize)
+✅ Adds a new step: Music (Start → Build → Proof → Music → Contact)
+✅ Music section: “Dev Sounds” vision + monetization lanes (beats, podcast, licensing)
+✅ Sticky header updated to 5 steps + dots
+✅ Next button now ends on Email at Contact
+✅ Phone updated to: 601-543-9335
+✅ Keeps: no left logo, cards start under sticky header, click-through scroll UX
+✅ Hero image: desktop uses mj-hero-desktop.png, mobile uses mj-hero-mobile.png
 
 ✅ Expected repo files:
-/assets/images/hero-desktop.png          (wide hero, e.g. 1600x700)
-/assets/images/hero-mobile.png           (portrait hero, e.g. 1080x1350)
+/assets/images/mj-hero-desktop.png
+/assets/images/mj-hero-mobile.png
 /assets/images/mj-how-build.png
 /assets/images/proj-delivery.png
 /assets/images/proj-shopify.png
 /assets/images/proj-founders.png
 /assets/images/mj-coach.jpg
+/assets/images/beyond-the-build-cover.png    (your album/track visual)
 -->
 
 <!DOCTYPE html>
@@ -27,7 +27,7 @@ V3 FULL DROP-IN (Guided Mobile Experience)
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Maurice Jordan | theSMASHcoder</title>
-  <meta name="description" content="Developer • Systems Architect • Personal Coach. I build systems that actually ship, and help builders rebuild discipline and direction." />
+  <meta name="description" content="Developer • Systems Architect • Personal Coach. Systems that ship + Dev Music for builders who execute." />
 
   <link rel="icon" href="favicon.ico" type="image/png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -44,14 +44,11 @@ V3 FULL DROP-IN (Guided Mobile Experience)
       --muted: rgba(234,240,255,.72);
 
       --green:#39D98A;
-      --green2:#17B26A;
       --purple:#8B5CF6;
-      --purple2:#A78BFA;
 
       --line: rgba(234,240,255,.10);
       --shadow: 0 18px 60px rgba(0,0,0,.55);
       --radius: 22px;
-      --radius2: 16px;
 
       --max: 1100px;
 
@@ -76,10 +73,9 @@ V3 FULL DROP-IN (Guided Mobile Experience)
     a{ color:inherit; text-decoration:none; }
     .wrap{ max-width: var(--max); margin: 0 auto; padding: 0 18px 90px; }
 
-    /* Sections should start right under sticky header */
+    /* Sections start under sticky header */
     section{ scroll-margin-top: calc(var(--stickyH) + 14px); }
 
-    /* Shared surfaces */
     .panel{
       border: 1px solid var(--line);
       background: rgba(14,22,43,.70);
@@ -179,15 +175,14 @@ V3 FULL DROP-IN (Guided Mobile Experience)
       border-color: transparent;
     }
 
-    /* Page top spacing: content begins under sticky header */
     .topPad{ padding-top: 14px; }
 
-    /* HERO (two-image approach) */
+    /* HERO */
     .hero{
       display:grid;
       grid-template-columns: 1.1fr .9fr;
       gap: 14px;
-      margin-top: 0; /* important: no extra gap under sticky header */
+      margin-top: 0;
     }
     @media (max-width: 920px){
       .hero{ grid-template-columns: 1fr; }
@@ -275,21 +270,8 @@ V3 FULL DROP-IN (Guided Mobile Experience)
       overflow:hidden;
       box-shadow: 0 18px 50px rgba(0,0,0,.55);
     }
-    .heroImg{
-      display:block;
-      width: 100%;
-      height: auto;
-    }
-    /* Desktop wide image shown by default */
-    .heroDesktop{ display:block; }
-    .heroMobile{ display:none; }
-    /* Mobile portrait image switches in */
-    @media (max-width: 720px){
-      .heroDesktop{ display:none; }
-      .heroMobile{ display:block; }
-    }
+    .heroImg{ display:block; width: 100%; height: auto; }
 
-    /* Section headers */
     .sectionHeader{
       display:flex;
       align-items:flex-end;
@@ -301,7 +283,6 @@ V3 FULL DROP-IN (Guided Mobile Experience)
     .h2{ margin:0; font-size: 22px; letter-spacing:-.2px; }
     .hint{ color: var(--muted); font-weight:700; font-size: 12px; }
 
-    /* HOW + PROOF grids */
     .grid2{
       display:grid;
       grid-template-columns: 1fr 1fr;
@@ -311,14 +292,13 @@ V3 FULL DROP-IN (Guided Mobile Experience)
       .grid2{ grid-template-columns: 1fr; }
     }
 
-    /* Clean image rendering helpers */
     img{ max-width:100%; }
 
     .imgWrap{
       border-radius: 16px;
       border: 1px solid rgba(234,240,255,.12);
       background: rgba(255,255,255,.03);
-      overflow:hidden;             /* critical: clips corners cleanly */
+      overflow:hidden;
       box-shadow: 0 18px 50px rgba(0,0,0,.55);
     }
     .img16x9{
@@ -333,14 +313,7 @@ V3 FULL DROP-IN (Guided Mobile Experience)
       object-fit: cover;
       display:block;
     }
-    .imgWide{
-      width:100%;
-      aspect-ratio: 21 / 9;
-      object-fit: cover;
-      display:block;
-    }
 
-    /* How list */
     .list{
       margin: 0;
       padding: 0;
@@ -372,7 +345,6 @@ V3 FULL DROP-IN (Guided Mobile Experience)
     .li b{ display:block; }
     .li p{ margin: 2px 0 0; color: var(--muted); font-size: 13px; line-height: 1.45; }
 
-    /* Callout */
     .callout{
       padding: 16px;
       border-radius: 18px;
@@ -386,7 +358,6 @@ V3 FULL DROP-IN (Guided Mobile Experience)
     .callout p{ margin: 0 0 12px; color: var(--muted); line-height: 1.55; }
     .miniList{ margin:0; padding-left: 16px; color: var(--muted); line-height: 1.6; font-size: 13px; }
 
-    /* PROOF cards */
     .cards{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
@@ -427,7 +398,6 @@ V3 FULL DROP-IN (Guided Mobile Experience)
     }
     .card p{ margin: 8px 0 0; color: var(--muted); font-size: 13px; line-height: 1.5; }
 
-    /* CONTACT / FINAL CTA */
     .finalGrid{
       display:grid;
       grid-template-columns: 1.1fr .9fr;
@@ -436,6 +406,26 @@ V3 FULL DROP-IN (Guided Mobile Experience)
     }
     @media (max-width: 920px){
       .finalGrid{ grid-template-columns: 1fr; }
+    }
+
+    .pillRow{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top: 12px;
+    }
+    .pill{
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      border-radius: 999px;
+      padding: 9px 12px;
+      border: 1px solid rgba(234,240,255,.12);
+      background: rgba(255,255,255,.04);
+      color: rgba(234,240,255,.85);
+      font-weight: 900;
+      font-size: 12px;
+      letter-spacing:.2px;
     }
 
     .social{
@@ -473,7 +463,6 @@ V3 FULL DROP-IN (Guided Mobile Experience)
       border-bottom: 1px dashed rgba(234,240,255,.28);
     }
 
-    /* Small polish for mobile */
     @media (max-width: 520px){
       :root{ --stickyH: 84px; }
       .journeyInner{ padding: 10px 14px; }
@@ -491,11 +480,13 @@ V3 FULL DROP-IN (Guided Mobile Experience)
         <a class="stepBtn isActive" href="#start" data-step="0"><i class="fas fa-play"></i> Start</a>
         <a class="stepBtn" href="#build" data-step="1"><i class="fas fa-drafting-compass"></i> Build</a>
         <a class="stepBtn" href="#proof" data-step="2"><i class="fas fa-bolt"></i> Proof</a>
-        <a class="stepBtn" href="#contact" data-step="3"><i class="fas fa-envelope"></i> Contact</a>
+        <a class="stepBtn" href="#music" data-step="3"><i class="fas fa-headphones"></i> Music</a>
+        <a class="stepBtn" href="#contact" data-step="4"><i class="fas fa-envelope"></i> Contact</a>
       </div>
 
       <div class="progressDots" aria-hidden="true">
         <span class="dot on"></span>
+        <span class="dot"></span>
         <span class="dot"></span>
         <span class="dot"></span>
         <span class="dot"></span>
@@ -509,7 +500,7 @@ V3 FULL DROP-IN (Guided Mobile Experience)
 
   <div class="wrap topPad">
 
-    <!-- HERO / START -->
+    <!-- START -->
     <section id="start">
       <div class="hero">
         <div class="panel heroLeft">
@@ -519,43 +510,36 @@ V3 FULL DROP-IN (Guided Mobile Experience)
           </div>
 
           <h1>I Build Systems<br/>That <span class="accent">Actually Ship</span></h1>
-          <div class="roleline">Developer • Systems Architect • Personal Coach</div>
+          <div class="roleline">Developer • Systems Architect • Personal Coach • Dev Music</div>
 
           <p class="sub">
-            I help builders turn ideas into working products, and help people rebuild discipline and direction.
-            This page is a guided walkthrough. Hit <b>Next</b> and follow the steps.
+            I help builders turn ideas into working products — and I score the process with “Dev Sounds”:
+            instrumentals made for focus, flow, and execution. This page is a guided walkthrough.
+            Hit <b>Next</b> and follow the steps.
           </p>
 
           <div class="ctaRow">
             <a class="btn btnPrimary" href="#contact"><i class="fas fa-paper-plane"></i> Start with a Clarity Call</a>
-            <a class="btn" href="#proof"><i class="fas fa-bolt"></i> Show me proof</a>
+            <a class="btn" href="#music"><i class="fas fa-headphones"></i> Dev Music</a>
             <a class="btn" href="https://www.linkedin.com/in/thesmashcoder" target="_blank" rel="noreferrer"><i class="fab fa-linkedin"></i> LinkedIn</a>
           </div>
         </div>
 
         <div class="panel heroMedia">
-  <div class="heroFrame">
+          <div class="heroFrame">
+            <picture>
+              <source media="(max-width: 720px)" srcset="assets/images/mj-hero-mobile.png">
+              <img
+                src="assets/images/mj-hero-desktop.png"
+                alt="theSMASHcoder hero banner"
+                class="heroImg"
+                loading="eager"
+                decoding="async"
+              />
+            </picture>
+          </div>
 
-    <picture>
-      <!-- Mobile portrait -->
-      <source
-        media="(max-width: 720px)"
-        srcset="assets/images/mj-hero-mobile.png">
-
-      <!-- Desktop landscape -->
-      <img
-        src="assets/images/mj-hero-desktop.png"
-        alt="theSMASHcoder hero banner"
-        class="heroImg"
-        loading="eager"
-        decoding="async"
-      />
-    </picture>
-
-  </div>
-</div>
-
-          <!-- Builder Mode content moved here (into Start) -->
+          <!-- Builder Mode merged into Start -->
           <div class="callout" style="margin-top:12px;">
             <h3>Builder Mode (your framework)</h3>
             <p>
@@ -614,7 +598,7 @@ V3 FULL DROP-IN (Guided Mobile Experience)
 
           <div class="ctaRow" style="margin-top:12px;">
             <a class="btn btnPrimary" href="#proof"><i class="fas fa-arrow-right"></i> Next: Proof</a>
-            <a class="btn" href="#contact"><i class="fas fa-envelope"></i> Skip to Contact</a>
+            <a class="btn" href="#music"><i class="fas fa-headphones"></i> Skip to Music</a>
           </div>
         </div>
 
@@ -707,12 +691,80 @@ V3 FULL DROP-IN (Guided Mobile Experience)
       </div>
 
       <div class="ctaRow" style="margin-top:14px;">
-        <a class="btn btnPrimary" href="#contact"><i class="fas fa-arrow-right"></i> Next: Contact</a>
+        <a class="btn btnPrimary" href="#music"><i class="fas fa-arrow-right"></i> Next: Music</a>
         <a class="btn" href="#build"><i class="fas fa-arrow-up"></i> Back to Build</a>
       </div>
     </section>
 
-    <!-- CONTACT (Final step) -->
+    <!-- MUSIC -->
+    <section id="music">
+      <div class="sectionHeader">
+        <h2 class="h2">Dev Music</h2>
+        <div class="hint">Focus • Flow • Execution</div>
+      </div>
+
+      <div class="grid2">
+        <div class="panel" style="padding:14px; border-radius:18px;">
+          <div class="callout">
+            <h3>Beyond the Build — Dev Sounds</h3>
+            <p>
+              This is music for builders: clean energy, forward motion, and just enough edge to keep you moving.
+              I’m bringing back the podcast and pairing it with instrumentals you can actually work to.
+            </p>
+
+            <div class="pillRow" aria-label="Monetization lanes">
+              <span class="pill"><i class="fas fa-music"></i> Beat Packs</span>
+              <span class="pill"><i class="fas fa-broadcast-tower"></i> Podcast</span>
+              <span class="pill"><i class="fas fa-ticket-alt"></i> Licensing</span>
+              <span class="pill"><i class="fas fa-code"></i> Dev Streams</span>
+            </div>
+
+            <ul class="miniList" style="margin-top:12px;">
+              <li><b>Beat Packs:</b> curated “build sessions” (focus, sprint, night shift)</li>
+              <li><b>Podcast:</b> short motivation + builder stories + workflow frameworks</li>
+              <li><b>Licensing:</b> creators / gyms / brands that need clean, powerful instrumentals</li>
+              <li><b>Dev Streams:</b> build-in-public sessions with the soundtrack</li>
+            </ul>
+
+            <div class="ctaRow" style="margin-top:14px;">
+              <!-- placeholders you can wire later -->
+              <a class="btn btnPrimary" href="#contact"><i class="fas fa-paper-plane"></i> Collab / License</a>
+              <a class="btn" href="#contact"><i class="fas fa-envelope"></i> Drop a request</a>
+            </div>
+
+            <p style="margin:12px 0 0; color: rgba(234,240,255,.60); font-size: 12px; line-height:1.5;">
+              Tip: once you have links (BeatStars / Spotify / Apple / YouTube), we’ll add them here as buttons.
+            </p>
+          </div>
+        </div>
+
+        <div class="panel" style="padding:14px; border-radius:18px;">
+          <div class="imgWrap">
+            <img class="img3x2" src="assets/images/beyond-the-build-cover.png" alt="Beyond the Build instrumental cover" loading="lazy" />
+          </div>
+
+          <div class="callout" style="margin-top:12px;">
+            <h3>What it sounds like</h3>
+            <p>
+              Night-city glow. Calm confidence. Heavy focus. Clean bounce.
+              A track you can loop while you ship.
+            </p>
+            <ul class="miniList">
+              <li><b>Tempo:</b> 90–102 BPM (head-nod, not hype)</li>
+              <li><b>Palette:</b> warm bass, soft synths, subtle texture, crisp drums</li>
+              <li><b>Vibe:</b> “gentleman beast” energy — composed but dangerous</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="ctaRow" style="margin-top:14px;">
+        <a class="btn btnPrimary" href="#contact"><i class="fas fa-arrow-right"></i> Next: Contact</a>
+        <a class="btn" href="#proof"><i class="fas fa-arrow-up"></i> Back to Proof</a>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
     <section id="contact">
       <div class="sectionHeader">
         <h2 class="h2">Finish Strong</h2>
@@ -729,7 +781,7 @@ V3 FULL DROP-IN (Guided Mobile Experience)
             <h3>Book a Clarity Call</h3>
             <p>
               If you’re stuck, inconsistent, or overwhelmed, we rebuild discipline and direction.
-              Fitness, life, business, or tech: the framework is the same. Execute with structure.
+              Fitness, life, business, tech — and now your soundtrack: the framework is the same.
             </p>
 
             <ul class="miniList">
@@ -742,15 +794,10 @@ V3 FULL DROP-IN (Guided Mobile Experience)
               <a class="btn btnPrimary" href="mailto:maurice@smashpro.app?subject=Clarity%20Call%20-%20theSMASHcoder">
                 <i class="fas fa-envelope"></i> Email Maurice
               </a>
-              <!-- Optional: replace with your booking link if you have it -->
-              <a class="btn" href="tel:+1-803-339-9361">
-                <i class="fas fa-phone"></i> Call
+              <a class="btn" href="tel:+16015439335">
+                <i class="fas fa-phone"></i> Call (601)
               </a>
             </div>
-
-            <p style="margin:12px 0 0; color: rgba(234,240,255,.60); font-size: 12px; line-height:1.5;">
-              Tip: update the phone number above, or remove the Call button if you don’t want it.
-            </p>
           </div>
         </div>
 
@@ -766,14 +813,12 @@ V3 FULL DROP-IN (Guided Mobile Experience)
               <a class="sbtn" href="mailto:maurice@smashpro.app" aria-label="Email"><i class="fas fa-envelope"></i></a>
             </div>
 
-            <div style="margin-top:14px; color: var(--muted); font-size: 13px; line-height:1.6;">
-              <b>Brand:</b> Green = growth. Purple = wisdom. <br/>
-              <b>Mindset:</b> Hulk-level fearlessness. Get the job done.
-            </div>
-
             <div class="ctaRow" style="margin-top:14px;">
               <a class="btn btnPrimary" href="mailto:maurice@smashpro.app?subject=I%20want%20to%20ship%20-%20theSMASHcoder">
                 <i class="fas fa-rocket"></i> Let’s ship
+              </a>
+              <a class="btn" href="mailto:maurice@smashpro.app?subject=Dev%20Music%20-%20Collab%20or%20License">
+                <i class="fas fa-headphones"></i> Music inquiry
               </a>
             </div>
           </div>
@@ -786,6 +831,8 @@ V3 FULL DROP-IN (Guided Mobile Experience)
       <div>
         <a class="tinyLink" href="#start">Start</a>
         &nbsp;·&nbsp;
+        <a class="tinyLink" href="#music">Music</a>
+        &nbsp;·&nbsp;
         <a class="tinyLink" href="https://www.linkedin.com/in/thesmashcoder" target="_blank" rel="noreferrer">LinkedIn</a>
       </div>
     </footer>
@@ -793,7 +840,6 @@ V3 FULL DROP-IN (Guided Mobile Experience)
   </div>
 
   <script>
-    // year
     document.getElementById("y").textContent = new Date().getFullYear();
 
     // guided journey logic (Next button + active step highlighting)
@@ -802,6 +848,7 @@ V3 FULL DROP-IN (Guided Mobile Experience)
         { id: "start", label: "Start" },
         { id: "build", label: "Build" },
         { id: "proof", label: "Proof" },
+        { id: "music", label: "Music" },
         { id: "contact", label: "Contact" },
       ];
 
@@ -817,7 +864,6 @@ V3 FULL DROP-IN (Guided Mobile Experience)
         stepBtns.forEach((b, idx) => b.classList.toggle("isActive", idx === i));
         dots.forEach((d, idx) => d.classList.toggle("on", idx === i));
 
-        // update Next button label on last step
         if (i === steps.length - 1){
           nextBtn.innerHTML = 'Email <i class="fas fa-envelope"></i>';
         } else {
@@ -852,18 +898,15 @@ V3 FULL DROP-IN (Guided Mobile Experience)
         el.scrollIntoView({ behavior: "smooth", block: "start" });
       }
 
-      // Next button behavior
       nextBtn.addEventListener("click", () => {
         const current = getCurrentStepIndex();
         if (current === steps.length - 1){
-          // final action: open email
           window.location.href = "mailto:maurice@smashpro.app?subject=Clarity%20Call%20-%20theSMASHcoder";
           return;
         }
         scrollToStep(current + 1);
       });
 
-      // highlight active step on scroll
       let ticking = false;
       window.addEventListener("scroll", () => {
         if (ticking) return;
@@ -874,7 +917,6 @@ V3 FULL DROP-IN (Guided Mobile Experience)
         });
       }, { passive: true });
 
-      // init
       setActive(0);
     })();
   </script>
