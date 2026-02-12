@@ -633,584 +633,6 @@ Expected repo files:
 
     <!-- PROOF -->
     <section id="proof">
-      <div c
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
-    html{ scroll-behavior:smooth; }
-    body{
-      margin:0;
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background:
-        radial-gradient(1000px 700px at 15% 0%, rgba(57,217,138,.18), transparent 55%),
-        radial-gradient(900px 700px at 90% 10%, rgba(139,92,246,.18), transparent 55%),
-        radial-gradient(900px 700px at 50% 90%, rgba(167,139,250,.10), transparent 55%),
-        linear-gradient(180deg, var(--bg), var(--bg2));
-      color: var(--ink);
-    }
-
-    a{ color:inherit; text-decoration:none; }
-    .wrap{ max-width: var(--max); margin: 0 auto; padding: 0 18px 90px; }
-
-    /* Sections start under sticky header */
-    section{ scroll-margin-top: calc(var(--stickyH) + 14px); }
-
-    .panel{
-      border: 1px solid var(--line);
-      background: rgba(14,22,43,.70);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
-
-    /* Sticky Journey Header (no logo) */
-    .journey{
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      height: var(--stickyH);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background: linear-gradient(180deg, rgba(7,10,15,.92), rgba(7,10,15,.70), rgba(7,10,15,.30));
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(234,240,255,.08);
-    }
-    .journeyInner{
-      width: min(var(--max), 100%);
-      padding: 10px 18px;
-      display:flex;
-      align-items:center;
-      gap: 10px;
-    }
-
-    .steps{
-      flex: 1 1 auto;
-      display:flex;
-      gap:10px;
-      align-items:center;
-      overflow:auto;
-      padding-bottom: 2px;
-      -webkit-overflow-scrolling: touch;
-    }
-    .stepBtn{
-      position:relative;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:8px;
-      padding: 10px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(234,240,255,.12);
-      background: rgba(255,255,255,.03);
-      color: rgba(234,240,255,.70);
-      font-weight: 800;
-      white-space: nowrap;
-      transition: transform .12s ease, background .12s ease, border-color .12s ease, color .12s ease;
-    }
-    .stepBtn:hover{
-      transform: translateY(-1px);
-      background: rgba(255,255,255,.05);
-      border-color: rgba(234,240,255,.22);
-      color: var(--ink);
-    }
-    .stepBtn.isActive{
-      border-color: rgba(57,217,138,.35);
-      background: rgba(57,217,138,.08);
-      color: rgba(57,217,138,.95);
-    }
-
-    .nextBtn{
-      flex: 0 0 auto;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      padding: 10px 14px;
-      border-radius: 14px;
-      font-weight: 900;
-      border: 1px solid rgba(234,240,255,.14);
-      background: linear-gradient(135deg, rgba(57,217,138,.95), rgba(139,92,246,.95));
-      color:#071013;
-      transition: transform .12s ease, filter .12s ease;
-      white-space: nowrap;
-    }
-    .nextBtn:hover{ transform: translateY(-1px); filter: brightness(1.02); }
-
-    .progressDots{
-      display:flex;
-      gap:6px;
-      align-items:center;
-      margin-left: 6px;
-      flex: 0 0 auto;
-    }
-    .dot{
-      width:8px; height:8px; border-radius:50%;
-      background: rgba(234,240,255,.20);
-      border: 1px solid rgba(234,240,255,.18);
-    }
-    .dot.on{
-      background: linear-gradient(135deg, var(--green), var(--purple));
-      border-color: transparent;
-    }
-
-    .topPad{ padding-top: 14px; }
-
-    /* HERO */
-    .hero{
-      display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 14px;
-      margin-top: 0;
-    }
-    @media (max-width: 920px){
-      .hero{ grid-template-columns: 1fr; }
-    }
-
-    .heroLeft{ padding: 22px; }
-    .kicker{
-      display:inline-flex;
-      gap:10px;
-      align-items:center;
-      color: var(--muted);
-      font-weight:700;
-      flex-wrap:wrap;
-    }
-    .kbadge{
-      border:1px solid rgba(57,217,138,.35);
-      color: rgba(57,217,138,.95);
-      background: rgba(57,217,138,.08);
-      padding: 6px 10px;
-      border-radius: 999px;
-      font-size: 12px;
-      letter-spacing:.2px;
-      white-space: nowrap;
-    }
-    h1{
-      margin: 14px 0 10px;
-      font-size: clamp(32px, 4.2vw, 56px);
-      line-height: 1.02;
-      letter-spacing: -0.7px;
-    }
-    .accent{
-      background: linear-gradient(90deg, var(--green), var(--purple));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-    .roleline{
-      color: rgba(234,240,255,.78);
-      font-weight: 700;
-      margin-bottom: 14px;
-    }
-    .sub{
-      max-width: 62ch;
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.6;
-      margin: 0;
-    }
-
-    .ctaRow{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-top: 16px;
-    }
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      padding: 12px 14px;
-      border-radius: 14px;
-      font-weight: 900;
-      border: 1px solid rgba(234,240,255,.14);
-      background: rgba(255,255,255,.04);
-      transition: transform .12s ease, background .12s ease, border-color .12s ease;
-      white-space: nowrap;
-    }
-    .btn:hover{
-      transform: translateY(-1px);
-      background: rgba(255,255,255,.06);
-      border-color: rgba(234,240,255,.22);
-    }
-    .btnPrimary{
-      background: linear-gradient(135deg, rgba(57,217,138,.95), rgba(139,92,246,.95));
-      border-color: transparent;
-      color:#071013;
-    }
-
-    .heroMedia{ padding: 12px; }
-    .heroFrame{
-      border: 1px solid rgba(234,240,255,.12);
-      background: rgba(7,10,15,.28);
-      border-radius: 18px;
-      overflow:hidden;
-      box-shadow: 0 18px 50px rgba(0,0,0,.55);
-    }
-    .heroImg{ display:block; width: 100%; height: auto; }
-
-    .sectionHeader{
-      display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
-      gap:10px;
-      flex-wrap:wrap;
-      margin: 18px 0 10px;
-    }
-    .h2{ margin:0; font-size: 22px; letter-spacing:-.2px; }
-    .hint{ color: var(--muted); font-weight:700; font-size: 12px; }
-
-    .grid2{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-    }
-    @media (max-width: 920px){
-      .grid2{ grid-template-columns: 1fr; }
-    }
-
-    img{ max-width:100%; }
-
-    .imgWrap{
-      border-radius: 16px;
-      border: 1px solid rgba(234,240,255,.12);
-      background: rgba(255,255,255,.03);
-      overflow:hidden;
-      box-shadow: 0 18px 50px rgba(0,0,0,.55);
-    }
-    .img16x9{
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      object-fit: cover;
-      display:block;
-    }
-    .img3x2{
-      width: 100%;
-      aspect-ratio: 3 / 2;
-      object-fit: cover;
-      display:block;
-    }
-
-    .list{
-      margin: 0;
-      padding: 0;
-      list-style: none;
-      display:flex;
-      flex-direction: column;
-      gap:10px;
-    }
-    .li{
-      display:flex;
-      gap:10px;
-      align-items:flex-start;
-      padding: 12px;
-      border-radius: 16px;
-      border: 1px solid rgba(234,240,255,.10);
-      background: rgba(255,255,255,.03);
-    }
-    .check{
-      width:28px; height:28px;
-      border-radius: 10px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background: rgba(57,217,138,.10);
-      border: 1px solid rgba(57,217,138,.30);
-      color: rgba(57,217,138,.95);
-      flex: 0 0 auto;
-    }
-    .li b{ display:block; }
-    .li p{ margin: 2px 0 0; color: var(--muted); font-size: 13px; line-height: 1.45; }
-
-    .callout{
-      padding: 16px;
-      border-radius: 18px;
-      border: 1px solid rgba(234,240,255,.12);
-      background:
-        radial-gradient(480px 320px at 15% 20%, rgba(57,217,138,.18), transparent 60%),
-        radial-gradient(480px 320px at 85% 20%, rgba(139,92,246,.18), transparent 60%),
-        rgba(7,10,15,.30);
-    }
-    .callout h3{ margin: 0 0 8px; font-size: 18px; letter-spacing:-.2px; }
-    .callout p{ margin: 0 0 12px; color: var(--muted); line-height: 1.55; }
-    .miniList{ margin:0; padding-left: 16px; color: var(--muted); line-height: 1.6; font-size: 13px; }
-
-    .cards{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-    }
-    @media (max-width: 920px){
-      .cards{ grid-template-columns: 1fr; }
-    }
-    .card{
-      border: 1px solid rgba(234,240,255,.10);
-      background: rgba(14,22,43,.55);
-      border-radius: 18px;
-      padding: 14px;
-      box-shadow: 0 14px 44px rgba(0,0,0,.35);
-    }
-    .cardTitle{ margin: 10px 0 10px; font-weight: 900; letter-spacing:-.2px; }
-    .row{
-      border-top: 1px dashed rgba(234,240,255,.16);
-      padding-top: 10px;
-      margin-top: 10px;
-    }
-    .lbl{
-      font-weight: 900;
-      color: rgba(234,240,255,.90);
-      display:flex;
-      gap:8px;
-      align-items:center;
-    }
-    .chip{
-      font-size: 11px;
-      padding: 4px 8px;
-      border-radius: 999px;
-      border: 1px solid rgba(139,92,246,.35);
-      background: rgba(139,92,246,.10);
-      color: rgba(167,139,250,.95);
-      font-weight: 900;
-      letter-spacing:.2px;
-    }
-    .card p{ margin: 8px 0 0; color: var(--muted); font-size: 13px; line-height: 1.5; }
-
-    .finalGrid{
-      display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 14px;
-      align-items: stretch;
-    }
-    @media (max-width: 920px){
-      .finalGrid{ grid-template-columns: 1fr; }
-    }
-
-    .pillRow{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-top: 12px;
-    }
-    .pill{
-      display:inline-flex;
-      gap:8px;
-      align-items:center;
-      border-radius: 999px;
-      padding: 9px 12px;
-      border: 1px solid rgba(234,240,255,.12);
-      background: rgba(255,255,255,.04);
-      color: rgba(234,240,255,.85);
-      font-weight: 900;
-      font-size: 12px;
-      letter-spacing:.2px;
-    }
-
-    .social{
-      display:flex;
-      gap: 10px;
-      flex-wrap:wrap;
-      margin-top: 12px;
-    }
-    .sbtn{
-      width: 44px; height: 44px;
-      border-radius: 14px;
-      border: 1px solid rgba(234,240,255,.12);
-      background: rgba(255,255,255,.04);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      transition: transform .12s ease, background .12s ease, border-color .12s ease;
-      color: rgba(234,240,255,.90);
-    }
-    .sbtn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.06); border-color: rgba(234,240,255,.22); }
-
-    footer{
-      margin-top: 26px;
-      color: rgba(234,240,255,.55);
-      font-size: 12px;
-      display:flex;
-      justify-content:space-between;
-      gap:10px;
-      flex-wrap:wrap;
-      border-top: 1px solid rgba(234,240,255,.10);
-      padding-top: 16px;
-    }
-    .tinyLink{
-      color: rgba(234,240,255,.75);
-      border-bottom: 1px dashed rgba(234,240,255,.28);
-    }
-
-    @media (max-width: 520px){
-      :root{ --stickyH: 84px; }
-      .journeyInner{ padding: 10px 14px; }
-      .nextBtn{ padding: 10px 12px; border-radius: 12px; }
-      .wrap{ padding: 0 14px 90px; }
-    }
-  </style>
-</head>
-
-<body>
-  <!-- Sticky Guided Header -->
-  <div class="journey" role="navigation" aria-label="Guided journey">
-    <div class="journeyInner">
-      <div class="steps" aria-label="Journey steps">
-        <a class="stepBtn isActive" href="#start" data-step="0"><i class="fas fa-play"></i> Start</a>
-        <a class="stepBtn" href="#build" data-step="1"><i class="fas fa-drafting-compass"></i> Build</a>
-        <a class="stepBtn" href="#proof" data-step="2"><i class="fas fa-bolt"></i> Proof</a>
-        <a class="stepBtn" href="#music" data-step="3"><i class="fas fa-headphones"></i> Music</a>
-        <a class="stepBtn" href="#contact" data-step="4"><i class="fas fa-envelope"></i> Contact</a>
-      </div>
-
-      <div class="progressDots" aria-hidden="true">
-        <span class="dot on"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-      </div>
-
-      <button class="nextBtn" id="nextBtn" type="button" aria-label="Go to next section">
-        Next <i class="fas fa-arrow-right"></i>
-      </button>
-    </div>
-  </div>
-
-  <div class="wrap topPad">
-
-    <!-- START -->
-    <section id="start">
-      <div class="hero">
-        <div class="panel heroLeft">
-          <div class="kicker">
-            <span class="kbadge">Fearless execution</span>
-            <span>for builders who want results</span>
-          </div>
-
-          <h1>I Build Systems<br/>That <span class="accent">Actually Ship</span></h1>
-          <div class="roleline">Developer • Systems Architect • Personal Coach • Dev Music</div>
-
-          <p class="sub">
-            I help builders turn ideas into working products and I score the process with “Dev Sounds”:
-            instrumentals made for focus, flow, and execution. This page is a guided walkthrough.
-            Hit <b>Next</b> and follow the steps.
-          </p>
-
-          <div class="ctaRow">
-            <a class="btn btnPrimary" href="#contact"><i class="fas fa-paper-plane"></i> Start with a Clarity Call</a>
-            <a class="btn" href="#music"><i class="fas fa-headphones"></i> Dev Music</a>
-            <a class="btn" href="https://www.linkedin.com/in/thesmashcoder" target="_blank" rel="noreferrer"><i class="fab fa-linkedin"></i> LinkedIn</a>
-          </div>
-        </div>
-
-        <div class="panel heroMedia">
-          <div class="heroFrame">
-            <picture>
-              <source media="(max-width: 720px)" srcset="assets/images/mj-hero-mobile.png">
-              <img
-                src="assets/images/mj-hero-desktop.png"
-                alt="theSMASHcoder hero banner"
-                class="heroImg"
-                loading="eager"
-                decoding="async"
-              />
-            </picture>
-          </div>
-
-          <!-- Builder Mode: SMASH Framework -->
-          <div class="callout" style="margin-top:12px;">
-            <h3>The SMASH Framework™</h3>
-            <p>
-              My structured system for turning messy ideas into scalable, shippable products.
-              Not vibes. Not chaos. A method.
-            </p>
-
-            <ul class="miniList">
-              <li><b>S — Scope:</b> Clarify the real problem, constraints, and measurable outcome.</li>
-              <li><b>M — Model:</b> Design architecture, data flow, APIs, and integration boundaries.</li>
-              <li><b>A — Assemble:</b> Build in structured layers with small, valuable releases.</li>
-              <li><b>S — Stabilize:</b> Test, refine, optimize, and harden before scale.</li>
-              <li><b>H — Handoff:</b> Document, transfer ownership, and define next evolution.</li>
-            </ul>
-
-            <div class="pillRow" style="margin-top:12px;">
-              <span class="pill"><i class="fas fa-sitemap"></i> Architecture First</span>
-              <span class="pill"><i class="fas fa-rocket"></i> Ship Small</span>
-              <span class="pill"><i class="fas fa-shield-alt"></i> Stability</span>
-              <span class="pill"><i class="fas fa-layer-group"></i> Scalable Systems</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- BUILD -->
-    <section id="build">
-      <div class="sectionHeader">
-        <h2 class="h2">How I Build</h2>
-        <div class="hint">Smash complexity. Ship solutions.</div>
-      </div>
-
-      <div class="grid2">
-        <div class="panel" style="padding:14px; border-radius:18px;">
-          <ul class="list">
-            <li class="li">
-              <div class="check"><i class="fas fa-check"></i></div>
-              <div>
-                <b>I start with clarity, not tools</b>
-                <p>Define the outcome, constraints, and success metrics before writing code.</p>
-              </div>
-            </li>
-            <li class="li">
-              <div class="check"><i class="fas fa-check"></i></div>
-              <div>
-                <b>I design systems before writing code</b>
-                <p>Architecture first so the product can grow without breaking.</p>
-              </div>
-            </li>
-            <li class="li">
-              <div class="check"><i class="fas fa-check"></i></div>
-              <div>
-                <b>I ship small, then scale</b>
-                <p>Release the smallest valuable thing, measure, and iterate fast.</p>
-              </div>
-            </li>
-            <li class="li">
-              <div class="check"><i class="fas fa-check"></i></div>
-              <div>
-                <b>I document so others can move fast</b>
-                <p>Clear docs and handoffs keep teams from getting stuck.</p>
-              </div>
-            </li>
-          </ul>
-
-          <div class="ctaRow" style="margin-top:12px;">
-            <a class="btn btnPrimary" href="#proof"><i class="fas fa-arrow-right"></i> Next: Proof</a>
-            <a class="btn" href="#music"><i class="fas fa-headphones"></i> Skip to Music</a>
-          </div>
-        </div>
-
-        <div class="panel" style="padding:14px; border-radius:18px;">
-          <div class="imgWrap">
-            <img class="img16x9" src="assets/images/mj-how-build.png" alt="How I build scene" loading="lazy" />
-          </div>
-
-          <div class="callout" style="margin-top:12px;">
-            <h3>What you get</h3>
-            <p>A working system, a clean path forward, and the discipline to keep it moving.</p>
-            <ul class="miniList">
-              <li>Architecture + implementation that’s easy to maintain</li>
-              <li>Practical automation and integrations</li>
-              <li>Clear documentation and next-step roadmap</li>
-              <li>Coaching support for consistency and execution</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROOF -->
-    <section id="proof">
       <div class="sectionHeader">
         <h2 class="h2">Problems I Solved</h2>
         <div class="hint">Real-world examples of shipping systems</div>
@@ -1219,17 +641,17 @@ Expected repo files:
       <div class="cards">
         <div class="card">
           <div class="imgWrap">
-            <img class="img16x9" src="assets/images/proj-delivery.png" alt="Delivery automation project" loading="lazy" />
+            <img class="img16x9" src="./assets/images/proj-delivery.png" alt="Delivery automation project" loading="lazy" />
           </div>
-
           <h3 class="cardTitle">Delivery slowed by manual work</h3>
+
           <div class="row">
             <div class="lbl">Problem <span class="chip">Ops</span></div>
             <p>Manual steps and unclear handoffs caused delays and mistakes.</p>
           </div>
           <div class="row">
             <div class="lbl">System <span class="chip">Automation</span></div>
-            <p>Automation + clean architecture patterns to reduce friction.</p>
+            <p>Clean architecture + automation patterns to reduce friction.</p>
           </div>
           <div class="row">
             <div class="lbl">Outcome <span class="chip">Shipping</span></div>
@@ -1239,17 +661,17 @@ Expected repo files:
 
         <div class="card">
           <div class="imgWrap">
-            <img class="img16x9" src="assets/images/proj-shopify.png" alt="Shopify profit clarity project" loading="lazy" />
+            <img class="img16x9" src="./assets/images/proj-shopify.png" alt="Shopify clarity project" loading="lazy" />
           </div>
-
           <h3 class="cardTitle">Shopify spend without profit clarity</h3>
+
           <div class="row">
             <div class="lbl">Problem <span class="chip">Ecom</span></div>
-            <p>Owners were spending but didn’t know what was actually paying them back.</p>
+            <p>Spending money without a clear view of what was paying back.</p>
           </div>
           <div class="row">
             <div class="lbl">System <span class="chip">Analytics</span></div>
-            <p>Dashboard + funnel logic to track spend, sales, and what’s truly working.</p>
+            <p>Funnel + metrics tracking to see spend, sales, and true ROI.</p>
           </div>
           <div class="row">
             <div class="lbl">Outcome <span class="chip">Profit</span></div>
@@ -1259,17 +681,17 @@ Expected repo files:
 
         <div class="card">
           <div class="imgWrap">
-            <img class="img16x9" src="assets/images/proj-founders.png" alt="Founder coaching + systems project" loading="lazy" />
+            <img class="img16x9" src="./assets/images/proj-founders.png" alt="Founders systems project" loading="lazy" />
           </div>
-
           <h3 class="cardTitle">Founders stuck in messy tech</h3>
+
           <div class="row">
             <div class="lbl">Problem <span class="chip">Build</span></div>
-            <p>Too many tools, no structure, and features that never shipped.</p>
+            <p>Too many tools, no structure, features that never shipped.</p>
           </div>
           <div class="row">
             <div class="lbl">System <span class="chip">Framework</span></div>
-            <p>Pragmatic roadmap + “ship small” execution loop with clean boundaries.</p>
+            <p>Roadmap + ship-small loop with clean boundaries.</p>
           </div>
           <div class="row">
             <div class="lbl">Outcome <span class="chip">Momentum</span></div>
@@ -1294,10 +716,10 @@ Expected repo files:
       <div class="grid2">
         <div class="panel" style="padding:14px; border-radius:18px;">
           <div class="callout">
-            <h3>Beyond the Build — Dev Sounds</h3>
+            <h3>Beyond the Build • Dev Sounds</h3>
             <p>
-              This is music for builders: clean energy, forward motion, and just enough edge to keep you moving.
-              I’m bringing back the podcast and pairing it with instrumentals you can actually work to.
+              Music for builders: clean energy, forward motion, and enough edge to keep you moving.
+              Podcast is coming back too: short motivation + builder frameworks.
             </p>
 
             <div class="pillRow" aria-label="Monetization lanes">
@@ -1308,38 +730,42 @@ Expected repo files:
             </div>
 
             <ul class="miniList" style="margin-top:12px;">
-              <li><b>Beat Packs:</b> curated “build sessions” (focus, sprint, night shift)</li>
-              <li><b>Podcast:</b> short motivation + builder stories + workflow frameworks</li>
-              <li><b>Licensing:</b> creators / gyms / brands that need clean, powerful instrumentals</li>
-              <li><b>Dev Streams:</b> build-in-public sessions with the soundtrack</li>
+              <li><b>Beat Packs:</b> focus, sprint, night shift sessions</li>
+              <li><b>Podcast:</b> execution, discipline, shipping</li>
+              <li><b>Licensing:</b> creators / brands that need clean instrumentals</li>
+              <li><b>Dev Streams:</b> build-in-public with the soundtrack</li>
             </ul>
 
             <div class="ctaRow" style="margin-top:14px;">
-              <a class="btn btnPrimary" href="#contact"><i class="fas fa-paper-plane"></i> Collab / License</a>
-              <a class="btn" href="#contact"><i class="fas fa-envelope"></i> Drop a request</a>
+              <a class="btn btnPrimary"
+                 href="mailto:maurice@smashpro.app?subject=Dev%20Sounds%20Inquiry%20-%20Collab%20or%20License&body=Hi%20Maurice%2C%0A%0AName%3A%20%0AWhat%20you%20need%3A%20(Collab%2FLicensing%2FBeat%20Pack%2FPodcast)%0AWhere%20it%20will%20be%20used%3A%20%0ATimeline%3A%20%0ABudget%20Range%3A%20%0A%0ALink%20to%20your%20channel%2Fbrand%3A%20%0A%0AThanks%21">
+                <i class="fas fa-paper-plane"></i> Collab / License (Email)
+              </a>
+
+              <a class="btn"
+                 href="sms:+18033399361?body=Dev%20Sounds%20Quick%20Request%0A%0AName%3A%20%0AUse%3A%20(Collab%2FLicensing%2FBeat%20Pack)%0ATimeline%3A%20%0ABudget%20Range%3A%20%0A%0ALink%3A%20">
+                <i class="fas fa-comment-dots"></i> Quick Text
+              </a>
             </div>
 
             <p style="margin:12px 0 0; color: rgba(234,240,255,.60); font-size: 12px; line-height:1.5;">
-              Tip: once you have links (BeatStars / Spotify / Apple / YouTube), we’ll add them here as buttons.
+              Once BeatStars/Spotify/YouTube links are live, we’ll swap them in here as buttons.
             </p>
           </div>
         </div>
 
         <div class="panel" style="padding:14px; border-radius:18px;">
           <div class="imgWrap">
-            <img class="img3x2" src="assets/images/beyond-the-build-cover.png" alt="Beyond the Build instrumental cover" loading="lazy" />
+            <img class="img3x2" src="./assets/images/beyond-the-build-cover.png" alt="Beyond the Build cover" loading="lazy" />
           </div>
 
           <div class="callout" style="margin-top:12px;">
             <h3>What it sounds like</h3>
-            <p>
-              Night-city glow. Calm confidence. Heavy focus. Clean bounce.
-              A track you can loop while you ship.
-            </p>
+            <p>Night-city glow. Calm confidence. Heavy focus. Clean bounce. Loop it while you ship.</p>
             <ul class="miniList">
-              <li><b>Tempo:</b> 90–102 BPM (head-nod, not hype)</li>
-              <li><b>Palette:</b> warm bass, soft synths, subtle texture, crisp drums</li>
-              <li><b>Vibe:</b> “gentleman beast” energy: composed but dangerous</li>
+              <li><b>Tempo:</b> 90–102 BPM</li>
+              <li><b>Palette:</b> warm bass, soft synths, crisp drums</li>
+              <li><b>Vibe:</b> composed but dangerous</li>
             </ul>
           </div>
         </div>
@@ -1362,27 +788,34 @@ Expected repo files:
         <div class="panel" style="padding:14px; border-radius:18px;">
           <div class="callout">
             <div class="imgWrap" style="margin-bottom:12px;">
-              <img class="img3x2" src="assets/images/mj-coach.jpg" alt="Coach portrait" loading="lazy" />
+              <img class="img3x2" src="./assets/images/mj-coach.jpg" alt="Coach portrait" loading="lazy" />
             </div>
 
-            <h3>Book a Clarity Call</h3>
+            <h3>Clarity Chat (Text) or Clarity Email</h3>
             <p>
-              If you’re stuck, inconsistent, or overwhelmed, we rebuild discipline and direction.
-              Fitness, life, business, tech, and now your soundtrack. The framework is the same.
+              Start with a structured message. I’ll respond with next steps and, if it’s a fit,
+              we’ll lock a quick call.
             </p>
 
             <ul class="miniList">
-              <li><b>Clarity Call:</b> 20 minutes to define the real problem</li>
-              <li><b>Execution Plan:</b> your next 7–14 days mapped clearly</li>
-              <li><b>Accountability:</b> simple checks that keep momentum alive</li>
+              <li><b>Text:</b> fastest start, great for mobile</li>
+              <li><b>Email:</b> best for details, links, attachments</li>
+              <li><b>Call:</b> if you prefer voice immediately</li>
             </ul>
 
             <div class="ctaRow" style="margin-top:14px;">
-              <a class="btn btnPrimary" href="mailto:maurice@smashpro.app?subject=Clarity%20Call%20-%20theSMASHcoder">
-                <i class="fas fa-envelope"></i> Email Maurice
+              <a class="btn btnPrimary"
+                 href="sms:+18033399361?body=SMASH%20Clarity%20Request%0A%0AName%3A%20%0AProject%20Type%3A%20%0AGoal%3A%20%0ATimeline%3A%20%0ABudget%20Range%3A%20%0A%0AAnything%20else%20I%20should%20know%3A%20">
+                <i class="fas fa-comment-dots"></i> Start a Clarity Text
               </a>
+
+              <a class="btn"
+                 href="mailto:maurice@smashpro.app?subject=Clarity%20Request%20-%20theSMASHcoder&body=Hi%20Maurice%2C%0A%0AName%3A%20%0AProject%20Type%3A%20%0AGoal%3A%20%0ATimeline%3A%20%0ABudget%20Range%3A%20%0A%0AKey%20links%2Fnotes%3A%20%0A%0AThanks%21">
+                <i class="fas fa-envelope"></i> Send a Clarity Email
+              </a>
+
               <a class="btn" href="tel:+18033399361">
-                <i class="fas fa-phone"></i> Call (803)339-9361
+                <i class="fas fa-phone"></i> Call (803) 339-9361
               </a>
             </div>
           </div>
@@ -1391,21 +824,24 @@ Expected repo files:
         <div class="panel" style="padding:14px; border-radius:18px;">
           <div class="callout" style="height:100%;">
             <h3>Quick links</h3>
-            <p>Pick your platform. But email is the fastest way to lock in a next step.</p>
+            <p>Text is fastest. Email is best for detail.</p>
 
             <div class="social">
               <a class="sbtn" target="_blank" rel="noreferrer" href="https://github.com/thesmashcoder" aria-label="GitHub"><i class="fab fa-github"></i></a>
               <a class="sbtn" target="_blank" rel="noreferrer" href="https://twitter.com/thesmashcoder" aria-label="Twitter/X"><i class="fab fa-twitter"></i></a>
               <a class="sbtn" target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/thesmashcoder" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-              <a class="sbtn" href="mailto:maurice@smashpro.app" aria-label="Email"><i class="fas fa-envelope"></i></a>
+              <a class="sbtn" href="sms:+18033399361?body=SMASH%20Clarity%20Request%0A%0AName%3A%20%0AProject%20Type%3A%20%0AGoal%3A%20%0ATimeline%3A%20%0ABudget%20Range%3A%20" aria-label="Text"><i class="fas fa-comment-dots"></i></a>
+              <a class="sbtn" href="mailto:maurice@smashpro.app?subject=Hello%20-%20theSMASHcoder&body=Hi%20Maurice%2C%0A%0AName%3A%20%0AI%27m%20reaching%20out%20about%3A%20%0A%0AThanks%21" aria-label="Email"><i class="fas fa-envelope"></i></a>
             </div>
 
             <div class="ctaRow" style="margin-top:14px;">
-              <a class="btn btnPrimary" href="mailto:maurice@smashpro.app?subject=I%20want%20to%20ship%20-%20theSMASHcoder">
-                <i class="fas fa-rocket"></i> Let’s ship
+              <a class="btn btnPrimary"
+                 href="sms:+18033399361?body=SMASH%20Let%27s%20Ship%0A%0AName%3A%20%0AProject%20Type%3A%20%0AGoal%3A%20%0ATimeline%3A%20%0ABudget%20Range%3A%20">
+                <i class="fas fa-rocket"></i> Let’s ship (Text)
               </a>
-              <a class="btn" href="mailto:maurice@smashpro.app?subject=Dev%20Music%20-%20Collab%20or%20License">
-                <i class="fas fa-headphones"></i> Music inquiry
+              <a class="btn"
+                 href="mailto:maurice@smashpro.app?subject=Let%27s%20Ship%20-%20theSMASHcoder&body=Hi%20Maurice%2C%0A%0AName%3A%20%0AProject%20Type%3A%20%0AGoal%3A%20%0ATimeline%3A%20%0ABudget%20Range%3A%20%0A%0AThanks%21">
+                <i class="fas fa-envelope"></i> Let’s ship (Email)
               </a>
             </div>
           </div>
@@ -1429,80 +865,71 @@ Expected repo files:
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
 
-    // guided journey logic (Next button + active step highlighting)
     (function(){
-      const steps = [
-        { id: "start", label: "Start" },
-        { id: "build", label: "Build" },
-        { id: "proof", label: "Proof" },
-        { id: "music", label: "Music" },
-        { id: "contact", label: "Contact" },
-      ];
-
+      const steps = ["start","build","proof","music","contact"];
       const nextBtn = document.getElementById("nextBtn");
       const stepBtns = Array.from(document.querySelectorAll(".stepBtn"));
       const dots = Array.from(document.querySelectorAll(".progressDots .dot"));
 
-      function clamp(n, a, b){ return Math.max(a, Math.min(b, n)); }
+      function clamp(n,a,b){ return Math.max(a, Math.min(b,n)); }
 
-      function setActive(index){
-        const i = clamp(index, 0, steps.length - 1);
-
-        stepBtns.forEach((b, idx) => b.classList.toggle("isActive", idx === i));
-        dots.forEach((d, idx) => d.classList.toggle("on", idx === i));
-
-        if (i === steps.length - 1){
-          nextBtn.innerHTML = 'Email <i class="fas fa-envelope"></i>';
-        } else {
-          nextBtn.innerHTML = 'Next <i class="fas fa-arrow-right"></i>';
-        }
+      function setActive(i){
+        i = clamp(i,0,steps.length-1);
+        stepBtns.forEach((b,idx)=>b.classList.toggle("isActive", idx===i));
+        dots.forEach((d,idx)=>d.classList.toggle("on", idx===i));
+        nextBtn.innerHTML = (i===steps.length-1)
+          ? 'Email <i class="fas fa-envelope"></i>'
+          : 'Next <i class="fas fa-arrow-right"></i>';
       }
 
-      function getCurrentStepIndex(){
+      function getCurrentIndex(){
         const scrollY = window.scrollY || document.documentElement.scrollTop || 0;
-        const offset = parseInt(getComputedStyle(document.documentElement).getPropertyValue("--stickyH"), 10) + 18;
+        const offset = parseInt(getComputedStyle(document.documentElement).getPropertyValue("--stickyH"),10) + 18;
 
-        let bestIdx = 0;
+        let best = 0;
         let bestTop = -Infinity;
 
-        steps.forEach((s, idx) => {
-          const el = document.getElementById(s.id);
-          if (!el) return;
+        steps.forEach((id, idx)=>{
+          const el = document.getElementById(id);
+          if(!el) return;
           const top = el.getBoundingClientRect().top + scrollY - offset;
           if (scrollY >= top && top > bestTop){
             bestTop = top;
-            bestIdx = idx;
+            best = idx;
           }
         });
-
-        return bestIdx;
+        return best;
       }
 
-      function scrollToStep(idx){
-        const target = steps[clamp(idx, 0, steps.length - 1)];
-        const el = document.getElementById(target.id);
-        if (!el) return;
-        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      function scrollToIndex(i){
+        const id = steps[clamp(i,0,steps.length-1)];
+        const el = document.getElementById(id);
+        if(el) el.scrollIntoView({ behavior:"smooth", block:"start" });
       }
 
-      nextBtn.addEventListener("click", () => {
-        const current = getCurrentStepIndex();
-        if (current === steps.length - 1){
-          window.location.href = "mailto:maurice@smashpro.app?subject=Clarity%20Call%20-%20theSMASHcoder";
+      const finalEmailHref =
+        "mailto:maurice@smashpro.app" +
+        "?subject=Clarity%20Request%20-%20theSMASHcoder" +
+        "&body=Hi%20Maurice%2C%0A%0AName%3A%20%0AProject%20Type%3A%20%0AGoal%3A%20%0ATimeline%3A%20%0ABudget%20Range%3A%20%0A%0AKey%20links%2Fnotes%3A%20%0A%0AThanks%21";
+
+      nextBtn.addEventListener("click", ()=>{
+        const current = getCurrentIndex();
+        if(current === steps.length-1){
+          window.location.href = finalEmailHref;
           return;
         }
-        scrollToStep(current + 1);
+        scrollToIndex(current + 1);
       });
 
       let ticking = false;
-      window.addEventListener("scroll", () => {
-        if (ticking) return;
+      window.addEventListener("scroll", ()=>{
+        if(ticking) return;
         ticking = true;
-        window.requestAnimationFrame(() => {
-          setActive(getCurrentStepIndex());
+        requestAnimationFrame(()=>{
+          setActive(getCurrentIndex());
           ticking = false;
         });
-      }, { passive: true });
+      }, { passive:true });
 
       setActive(0);
     })();
